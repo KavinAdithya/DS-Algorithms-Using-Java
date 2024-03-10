@@ -1,6 +1,7 @@
-package com.techCrack;
+package concept.dataStructure;
 
 public class ArrayList<T> {
+
     private T array[];
     private int n=-1;
     ArrayList(int n) {
@@ -61,6 +62,70 @@ public class ArrayList<T> {
     public void printArray(){
         for(int k=0;k<100000;k++){
             getMembersAsArray();
+        }
+    }
+    public boolean clear(){
+        for(int loop=0;loop<=n;loop++){
+            array[loop]=null;
+        }
+        n=-1;
+        return true;
+    }
+    public boolean isEmpty(){
+        return n==-1;
+    }
+    public boolean containsAll(ArrayList<T> methodList){
+        try{
+            if(methodList.size()>n+1){
+                return false;
+            }
+            int mL=0;
+            for(int loop=0;loop<=n;loop++){
+                if(array[loop]==methodList.get(mL)){
+                    mL++;
+                }
+            }
+            if(mL==size()-1){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    public boolean contains(T value){
+        try{
+            for(int loop=0;loop<=n;loop++){
+                if(value==array[loop]){
+                    return true;
+                }
+            }
+            return false;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    public boolean retainAll(ArrayList<T> methodList){
+        T[] array1=(T[])new Object[methodList.size()];
+        int m=-1;
+        try{
+            int mL=0;
+            for(int loop=0;loop<size();loop++){
+                for(int innerLoop=0;innerLoop<methodList.size();innerLoop++){
+                    if(array[loop]==methodList.get(innerLoop)){
+                        array1[++m]=array[loop];
+                        break;
+                    }
+                }
+            }
+            array=array1;
+            n=m;
+            return true;
+        }
+        catch(Exception e){
+            return false;
         }
     }
 }
