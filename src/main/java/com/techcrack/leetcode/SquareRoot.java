@@ -89,5 +89,4 @@ public class SquareRoot {
         }
         return (int)end;
     }
-
 }
