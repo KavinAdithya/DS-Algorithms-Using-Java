@@ -21,10 +21,17 @@ class SquareRootTest {
 //
 //        assertEquals(expected,sc.searchForCharacter(actual,target));
 
-        FindFirstAndLast fal=new FindFirstAndLast();
+//        FindFirstAndLast fal=new FindFirstAndLast();
+//
+//        int[] actual={9,11,11,11,11,12,13};
+////        int[] ans={5,5};
+////        assertArrayEquals(ans,fal.binarySearchNormal(actual,12));
+//            InfinityArray ia=new InfinityArray();
+//            assertEquals(5,ia.arrayInfinity(actual,12));
 
-        int[] actual={9,11,11,11,11,12,13};
-        int[] ans={5,5};
-        assertArrayEquals(ans,fal.binarySearchNormal(actual,12));
+                int[] array={1,2,3,5,6,4,3,2};
+                MountainPeak mp=new MountainPeak();
+                assertEquals(4,mp.findPeakMountain(array));
+
     }
 }
