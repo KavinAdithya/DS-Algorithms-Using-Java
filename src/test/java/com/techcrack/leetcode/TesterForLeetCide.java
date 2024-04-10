@@ -29,9 +29,11 @@ class SquareRootTest {
 //            InfinityArray ia=new InfinityArray();
 //            assertEquals(5,ia.arrayInfinity(actual,12));
 
-                int[] array={1,2,3,5,6,4,3,2};
-                MountainPeak mp=new MountainPeak();
-                assertEquals(4,mp.findPeakMountain(array));
+                int[] array={0,5,3,1};
+//                MountainPeak mp=new MountainPeak();
+//                assertEquals(4,mp.findPeakMountain(array));
+            ArrayMountain am=new ArrayMountain();
+            assertEquals(3,am.findInMountainArray(1,array));
 
     }
 }
