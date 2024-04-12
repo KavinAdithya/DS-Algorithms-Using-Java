@@ -83,8 +83,12 @@ public class RotatedBinarySearch {
                 return mid-1;
             else if(nums[mid]>nums[first])
                 first=mid+1;
-            else
+            else if(nums[mid]<nums[last])
                 last=mid-1;
+            else if(mid>0&&nums[mid]==nums[mid-1])
+                first=mid;
+            else
+                last=mid;
         }
 
         return -1;
