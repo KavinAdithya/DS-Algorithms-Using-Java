@@ -34,9 +34,9 @@ class SquareRootTest {
 ////                assertEquals(4,mp.findPeakMountain(array));
 //            ArrayMountain am=new ArrayMountain();
 //            assertEquals(3,am.findInMountainArray(1,array));
-        int[] nums={4,5,6,7,0,1,2};
+        int[] nums={2,9,1,2,2,2,2};
         RotatedBinarySearch rbs=new RotatedBinarySearch();
-        assertEquals(0,rbs.binarySearch(nums,4));
+        assertEquals(1,rbs.findCentralPivot(nums));
 
     }
 }

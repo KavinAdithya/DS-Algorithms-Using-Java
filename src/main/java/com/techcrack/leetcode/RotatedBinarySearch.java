@@ -10,7 +10,6 @@ public class RotatedBinarySearch {
     public int binarySearch(int[] nums,int target){
 
         int pivot=findPivot(nums);
-
         System.out.println(pivot);
         if(nums[pivot]==target)
             return pivot;
@@ -38,11 +37,11 @@ public class RotatedBinarySearch {
             if( mid<nums.length&&nums[mid]>nums[mid+1])
                 return mid;
             else if(mid>0&&nums[mid]<nums[mid-1])
-                return mid;
+                return mid-1;
              else if(nums[start]<nums[mid])
-                start=mid;
+                start=mid+1;
             else
-                end=mid;
+                end=mid-1;
         }
         return -1;
     }
@@ -70,4 +69,24 @@ public class RotatedBinarySearch {
         return -1;
     }
 
+    public int findCentralPivot(int[] nums){
+        int first=0;
+        int last=nums.length-1;
+
+        while(first<last){
+
+            int mid=(first+last)/2;
+
+            if(mid<nums.length&&nums[mid]>nums[mid+1])
+                return mid;
+            else if(mid>0&&nums[mid]<nums[mid-1])
+                return mid-1;
+            else if(nums[mid]>nums[first])
+                first=mid+1;
+            else
+                last=mid-1;
+        }
+
+        return -1;
+    }
 }
