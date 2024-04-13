@@ -42,8 +42,15 @@ class SquareRootTest {
 
     @Test
     public void newTester(){
-        int[] actual={7,2,5,10,8};
-        SubMaxArray sma=new SubMaxArray();
-        assertEquals(4,sma.splitArray(actual,3));
+//        int[] actual={7,2,5,10,8};
+//        SubMaxArray sma=new SubMaxArray();
+//        assertEquals(4,sma.splitArray(actual,3));
+
+        LongestPalindromeString lps=new LongestPalindromeString();
+        String s="cbbd";
+
+        String expected="bb";
+
+        assertEquals(expected,lps.subString(s));
     }
 }
