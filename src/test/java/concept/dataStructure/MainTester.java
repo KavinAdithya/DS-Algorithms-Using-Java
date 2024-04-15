@@ -1,6 +1,7 @@
 package concept.dataStructure;
 
 import com.techcrack.DSA.Arrays.ConcatenationTwoArray;
+import com.techcrack.DSA.Arrays.RunningSum;
 import com.techcrack.DSA.Arrays.ZeroBasedPermutation;
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +43,15 @@ public class MainTester {
         int[] expected={1,2,3,1,2,3};
         ConcatenationTwoArray cta=new ConcatenationTwoArray();
         assertArrayEquals(expected,cta.concatArray(actual));
+    }
+
+    @Test
+    public void runningSumTest(){
+        RunningSum rs=new RunningSum();
+
+        int[] actual={1,2,3,4,5,6};
+        int[] expected={1,3,6,10,15,21};
+
+        assertArrayEquals(expected,rs.runningSum(actual));
     }
 }
