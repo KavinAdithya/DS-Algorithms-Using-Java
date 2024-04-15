@@ -1,5 +1,6 @@
 package concept.dataStructure;
 
+import com.techcrack.DSA.Arrays.ConcatenationTwoArray;
 import com.techcrack.DSA.Arrays.ZeroBasedPermutation;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +34,13 @@ public class MainTester {
         int[] actual={0,2,1,5,3,4};
         int[] expected={0,1,2,4,5,3};
         assertArrayEquals(expected,zbp.array(actual));
+    }
+
+    @Test
+    public void concatenationTest(){
+        int[] actual={1,2,3};
+        int[] expected={1,2,3,1,2,3};
+        ConcatenationTwoArray cta=new ConcatenationTwoArray();
+        assertArrayEquals(expected,cta.concatArray(actual));
     }
 }
