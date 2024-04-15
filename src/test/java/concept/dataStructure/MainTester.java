@@ -2,11 +2,14 @@ package concept.dataStructure;
 
 import com.techcrack.DSA.Arrays.ConcatenationTwoArray;
 import com.techcrack.DSA.Arrays.RunningSum;
+import com.techcrack.DSA.Arrays.SpiralMatrix;
 import com.techcrack.DSA.Arrays.ZeroBasedPermutation;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTester {
     @Test
@@ -53,5 +56,19 @@ public class MainTester {
         int[] expected={1,3,6,10,15,21};
 
         assertArrayEquals(expected,rs.runningSum(actual));
+    }
+
+    @Test
+    public void spiralMatrixTest(){
+
+        int[][] matrix={
+                {1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12}
+        };
+        Integer[] expected={1,2,3,6,9,8,7,4,5};
+        SpiralMatrix sm=new SpiralMatrix();
+        System.out.println(sm.spiralOrder(matrix));
+        fail();
     }
 }
