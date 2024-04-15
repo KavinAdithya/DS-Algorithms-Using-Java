@@ -50,4 +50,27 @@ public class ZeroBasedPermutation {
         }
         return nums;
     }
+
+
+    /*
+     *Another great logic using recursion
+     * let we see that algorithm
+     */
+
+    public int[] array(int[] nums){
+        //Invoking the method permutation
+        permutation(nums,0);
+
+        return nums;
+    }
+
+    //Recursively changing its value
+    private void permutation(int[] array,int end){
+        if(end<array.length){
+            int next=array[end];
+            int res=array[next];
+            permutation(array,end+1);
+            array[end]=res;
+        }
+    }
 }

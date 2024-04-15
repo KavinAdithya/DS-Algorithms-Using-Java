@@ -32,6 +32,6 @@ public class MainTester {
         ZeroBasedPermutation zbp=new ZeroBasedPermutation();
         int[] actual={0,2,1,5,3,4};
         int[] expected={0,1,2,4,5,3};
-        assertArrayEquals(expected,zbp.arrayBuild(actual));
+        assertArrayEquals(expected,zbp.array(actual));
     }
 }
