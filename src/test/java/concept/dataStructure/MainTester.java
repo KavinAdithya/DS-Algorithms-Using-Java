@@ -1,9 +1,6 @@
 package concept.dataStructure;
 
-import com.techcrack.DSA.Arrays.ConcatenationTwoArray;
-import com.techcrack.DSA.Arrays.RunningSum;
-import com.techcrack.DSA.Arrays.SpiralMatrix;
-import com.techcrack.DSA.Arrays.ZeroBasedPermutation;
+import com.techcrack.DSA.Arrays.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -69,6 +66,19 @@ public class MainTester {
         Integer[] expected={1,2,3,6,9,8,7,4,5};
         SpiralMatrix sm=new SpiralMatrix();
         System.out.println(sm.spiralOrder(matrix));
-        fail();
+
+    }
+
+    @Test
+    public void richestCustomerWealth(){
+        RichestCustomerWealth rsw=new RichestCustomerWealth();
+
+        int[][] customer={
+                {1,2,3},
+                {3,4,9},
+                {11,2}
+        };
+
+        assertEquals(16,rsw.customer(customer));
     }
 }
