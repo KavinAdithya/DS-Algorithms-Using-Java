@@ -81,4 +81,40 @@ public class MainTester {
 
         assertEquals(16,rsw.customer(customer));
     }
+
+
+    @Test
+    public void ShuffleArray(){
+        ShuffleArray sa=new ShuffleArray();
+
+        int[] array={2,5,1,3,4,7};
+
+        int[] expected={2,3,5,4,1,7};
+
+        assertArrayEquals(expected,sa.array(array,3));
+    }
+
+    @Test
+    public void candiesTest(){
+        Candies candy=new Candies();
+
+        int[] candies={12,1,12};
+         List<Boolean> list=candy.kidsWithCandies(candies,10);
+
+         System.out.println(list);
+    }
+
+    @Test
+    public void spiralMatrix2(){
+        SpiralMatrix2 sm=new SpiralMatrix2();
+
+        int[][] matrix=sm.generateMatrix(2);
+
+        for(int[] n:matrix){
+            for(int m:n){
+                System.out.print(m+" ");
+            }
+            System.out.println();
+        }
+    }
 }
