@@ -136,5 +136,25 @@ public class MainTester {
         assertArrayEquals(expected,smt.smallerNumbersThanCurrent(actual));
     }
 
+    @Test
+    public void targetArrayTest(){
+        TargetArray ta=new TargetArray();
+
+        int[] value={1};
+        int[] index={0};
+        int[] expected={1};
+
+        assertArrayEquals(expected,ta.createTargetArray(value,index));
+    }
+
+    @Test
+    public void panaGramTest(){
+        PanaGram pg=new PanaGram();
+
+        String s="leetcode";
+
+        assertEquals(false,pg.panagram(s));
+
+    }
 
 }
