@@ -117,4 +117,24 @@ public class MainTester {
             System.out.println();
         }
     }
+
+    @Test
+    public void goodPairTester(){
+        GoodPair gp=new GoodPair();
+        int[] actual={1,2,3};
+
+        assertEquals(0,gp.numIdenticalPairs(actual));
+    }
+
+    @Test
+    public void smallerThanYouTester(){
+        int[] actual={8,1,2,2,3};
+        int[] expected={4,0,1,1,3};
+
+        SmallerThanYou smt=new SmallerThanYou();
+
+        assertArrayEquals(expected,smt.smallerNumbersThanCurrent(actual));
+    }
+
+
 }
