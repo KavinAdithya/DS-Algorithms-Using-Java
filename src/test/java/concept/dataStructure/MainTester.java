@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -155,6 +156,50 @@ public class MainTester {
 
         assertEquals(false,pg.panagram(s));
 
+    }
+
+    @Test
+    public void countItemsTest(){
+        List<String> list1=new ArrayList<>();
+        list1.add("phone");
+        list1.add("blue");
+        list1.add("pixel");
+
+        List<String> list2=new ArrayList<>();
+        list2.add("computer");
+        list2.add("silver");
+        list2.add("lenovo");
+
+        List<String> list3=new ArrayList<>();
+        list3.add("phone");
+        list3.add("gold");
+        list3.add("iphone");
+
+        List<String> list4=new ArrayList<>();
+        list3.add("phone");
+        list3.add("gold");
+        list3.add("iphone");
+
+        List<List<String>> list=new ArrayList<>();
+        list.add(list1);
+        list.add(list2);
+        list.add(list3);
+        list.add(list4);
+
+        String ruleKey="type";
+        String ruleValue="phone";
+
+        CountItemsMatching cim=new CountItemsMatching();
+        assertEquals(2,cim.countMatches1(list,ruleKey,ruleValue));
+
+
+    }
+
+
+    @Test
+    public void highestAltitude(){
+        int[] array={-5,1,5,0,-7};
+        assertEquals(1,array);
     }
 
 }
