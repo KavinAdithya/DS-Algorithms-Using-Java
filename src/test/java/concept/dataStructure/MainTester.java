@@ -202,4 +202,33 @@ public class MainTester {
         assertEquals(1,array);
     }
 
+    @Test
+    public void flippingArray(){
+        FlippingArray fa=new FlippingArray();
+        int[][] actual={
+                {1,1,0,0},
+                {1,0,0,1},
+                {0,1,1,1},
+                {1,0,1,0}
+        };
+        int[][] expected={
+                {1,1,0,0},
+                {0,1,1,0},
+                {0,0,0,1},
+                {1,0,1,0}
+        };
+
+        assertArrayEquals(expected,fa.flipAndInvertImage(actual));
+    }
+
+
+    @Test
+    public void cellsWithOddValue(){
+        int[][] actual={
+                {0,1},
+                {1,1}
+        };
+        CellsWithOddValue cwv=new CellsWithOddValue();
+        assertEquals(6,cwv.oddCells(2,3,actual));
+    }
 }
