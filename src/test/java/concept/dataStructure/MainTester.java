@@ -271,4 +271,17 @@ public class MainTester {
 
         assertArrayEquals(expected,sm.transpose(actual));
     }
+
+    @Test
+    public void addToInteger(){
+        AddToArrayInteger atai=new AddToArrayInteger();
+
+        int[] actual={
+                1,2,0,0
+        };
+
+        atai.arrayAdd(actual,805);
+
+        fail("Check It Kavin Again");
+    }
 }
