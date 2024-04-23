@@ -229,6 +229,46 @@ public class MainTester {
                 {1,1}
         };
         CellsWithOddValue cwv=new CellsWithOddValue();
-        assertEquals(6,cwv.oddCells(2,3,actual));
+        assertEquals(6,cwv.oddCells1(2,3,actual));
+    }
+
+    @Test
+    public void diagonalSumTest(){
+        DiagonalSum ds=new DiagonalSum();
+
+        int[][] actual={
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+        };
+        assertEquals(25,ds.diagonalSum(actual));
+    }
+
+    @Test
+    public void findDigitTest(){
+        findEvenDigits fed=new findEvenDigits();
+
+        int[] actual={
+                12,345,2,6,7896
+        };
+
+        assertEquals(2,fed.findNumbers1(actual));
+    }
+
+    @Test
+    public void squareMatrix(){
+        SquareMatrix sm=new SquareMatrix();
+        int[][] actual={
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+        };
+        int[][] expected={
+                {1,4,7},
+                {2,5,8},
+                {3,6,9}
+        };
+
+        assertArrayEquals(expected,sm.transpose(actual));
     }
 }

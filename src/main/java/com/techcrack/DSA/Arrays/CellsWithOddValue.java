@@ -22,20 +22,10 @@ public class CellsWithOddValue {
             int column2=indicator[1];
             int row=0;
             for(int k=0;k<n||k<m;k++){
-                if(row<m){
+                if(row<m)
                     array[row][column2]++;
-                    if(array[row][column2]%2==0)
-                        odd--;
-                    else
-                        odd++;
-                }
-                if(column1<n){
+                if(column1<n)
                     array[row1][column1]++;
-                    if(array[row1][column1]%2==0)
-                        odd--;
-                    else
-                        odd++;
-                }
                 column1++;
                 row++;
                 System.out.println(Arrays.toString(array[0]));
@@ -43,6 +33,38 @@ public class CellsWithOddValue {
             }
 
         }
+        for(int[] k:array){
+            for(int j:k){
+                if(j%2!=0)
+                    odd++;
+                else
+                    odd--;
+            }
+        }
         return odd;
+    }
+
+    public int oddCells1(int m,int n,int[][] indices){
+        int[] row=new int[m];
+        int[] column=new int[n];
+
+        for(int[] k:indices){
+            row[k[0]]++;
+            column[k[1]]++;
+        }
+
+        int rowCount=0;
+        int columnCount=0;
+
+        for(int k:row){
+            if(k%2!=0)
+                rowCount++;
+        }
+        for(int k:column){
+            if(k%2!=0)
+                columnCount++;
+        }
+
+        return rowCount*(n-columnCount)+columnCount*(n-rowCount);
     }
 }
