@@ -1,5 +1,6 @@
 package concept.dataStructure;
 
+import com.techcrack.DSA.Arrays.MaximumYear;
 import org.junit.jupiter.api.*;
 
 import java.time.Duration;
@@ -104,5 +105,43 @@ class ArrayListTest {
         assertEquals(2,list.size());
         assertTrue(list.retainAll(list1));
         assertEquals(1,list.size());
+    }
+
+
+    @Test
+    public void maximumYearTest(){
+        MaximumYear my=new MaximumYear();
+
+        int[][] actual={
+            {1982,1998},
+            {2013,2042},
+            {2010,2035},
+            {2022,2050},
+            {2047,2048}
+        };
+
+        int[][] actual1={
+           {1993,1999},
+           {2000,2010}
+        };
+
+        int[][] actual2={
+            {1950,1961},
+            {1960,1971},
+            {1970,1981}
+        };
+        int[][] actual3={
+            {1987,2047},
+            {1952,2006},
+            {2021,2042},
+            {2047,2049},
+            {2036,2040},
+            {1994,2009}
+        };
+        assertEquals(2022,my.maximumPopulation(actual));
+        assertEquals(1993,my.maximumPopulation(actual1));
+        assertEquals(1960,my.maximumPopulation(actual2));
+        assertEquals(1994,my.maximumPopulation(actual3));
+
     }
 }
