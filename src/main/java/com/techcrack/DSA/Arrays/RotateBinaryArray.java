@@ -56,7 +56,7 @@ public class RotateBinaryArray {
 
         for(int k=0;k<=length;k++){
             for(int d=0;d<=length;d++){
-                if(target[k][d]==mat[k][length-d])
+                if(target[k][d]==mat[k][length-k])
                     r0++;
                 if(target[k][d]==mat[length-k][length-d])
                     r1++;
