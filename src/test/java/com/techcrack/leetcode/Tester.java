@@ -3,6 +3,7 @@ package com.techcrack.leetcode;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.techcrack.DSA.Arrays.RotateBinaryArray;
+import com.techcrack.DSA.Arrays.UniqueAdd;
 import org.junit.jupiter.api.Test;
 public class Tester {
 
@@ -44,5 +45,15 @@ public class Tester {
         };
 
         assertTrue(rba.findRotation1(mat2,target2));
+    }
+
+    @Test
+    public void UniqueTest(){
+        UniqueAdd ua=new UniqueAdd();
+        int[] expected1={-2,-1,0,1,2};
+        int[] expected2={-2,-1,1,2};
+
+        assertArrayEquals(expected1,ua.sumZero(5));
+        assertArrayEquals(expected2,ua.sumZero(4));
     }
 }
