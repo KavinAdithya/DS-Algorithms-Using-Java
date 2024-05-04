@@ -2,6 +2,7 @@ package com.techcrack.leetcode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.techcrack.DSA.Arrays.LuckyNumberMatrix;
 import com.techcrack.DSA.Arrays.RotateBinaryArray;
 import com.techcrack.DSA.Arrays.UniqueAdd;
 import org.junit.jupiter.api.Test;
@@ -55,5 +56,30 @@ public class Tester {
 
         assertArrayEquals(expected1,ua.sumZero(5));
         assertArrayEquals(expected2,ua.sumZero(4));
+    }
+
+    @Test
+    public void luckyNumberTest(){
+        LuckyNumberMatrix lnm=new LuckyNumberMatrix();
+
+        int[][] actual={
+                {3,7,8},
+                {9,11,13},
+                {15,16,17}
+        };
+        int[][] actual1={
+                {1,10,4,2},
+                {9,3,8,7},
+                {15,16,17,12}
+        };
+
+        int[][] actual2={
+                {7,8},
+                {1,2}
+        };
+
+        System.out.println(lnm.luckyNumbers(actual));
+        System.out.println(lnm.luckyNumbers(actual1));
+        System.out.println(lnm.luckyNumbers(actual2));
     }
 }
