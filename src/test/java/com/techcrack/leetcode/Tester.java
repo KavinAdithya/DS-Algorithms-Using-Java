@@ -3,6 +3,7 @@ package com.techcrack.leetcode;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.techcrack.DSA.Arrays.LuckyNumberMatrix;
+import com.techcrack.DSA.Arrays.MaximumSubArray;
 import com.techcrack.DSA.Arrays.RotateBinaryArray;
 import com.techcrack.DSA.Arrays.UniqueAdd;
 import org.junit.jupiter.api.Test;
@@ -81,5 +82,23 @@ public class Tester {
         System.out.println(lnm.luckyNumbers(actual));
         System.out.println(lnm.luckyNumbers(actual1));
         System.out.println(lnm.luckyNumbers(actual2));
+    }
+
+    @Test
+    public void maximumSubArray(){
+        MaximumSubArray msa=new MaximumSubArray();
+
+        int[] actual={
+                -2,1,-3,4,-1,2,1,-5,4
+        };
+        int[] actual1={
+                5,4,-1,7,8
+        };
+        int[] actual2={
+                1
+        };
+        assertEquals(6,msa.maxSubArray(actual));
+        assertEquals(23,msa.maxSubArray(actual1));
+        assertEquals(1,msa.maxSubArray(actual2));
     }
 }
