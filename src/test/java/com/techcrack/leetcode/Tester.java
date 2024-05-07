@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.techcrack.DSA.Arrays.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.Set;
+
 public class Tester {
 
     @Test
@@ -124,5 +127,36 @@ public class Tester {
         int[] expected={1,2,4};
 
         assertArrayEquals(expected,po.plusOne1(actual));
+    }
+    @Test
+    public void spiralMatrix3(){
+        SpiralMatrix3 sp3=new SpiralMatrix3();
+        int[][] expected={{0,0},
+                {0,1},
+                {0,2},
+                {0,3}
+        };
+        assertArrayEquals(expected,sp3.spiralMatrixIII(1,4,0,0));
+    }
+
+
+    @Test
+    public void setmatrixTest(){
+        SetMatrixZeros smz=new SetMatrixZeros();
+
+        int[][] actual={
+                {1,1,1},
+                {1,0,1},
+            {1,1,1}
+        };
+
+        int[][] expected={
+                {1,0,1},
+            {0,0,0},
+            {1,0,1}
+        };
+
+        smz.setZeroes1(actual);
+        assertArrayEquals(expected,actual);
     }
 }
