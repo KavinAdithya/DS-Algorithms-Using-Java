@@ -2,10 +2,7 @@ package com.techcrack.leetcode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.techcrack.DSA.Arrays.LuckyNumberMatrix;
-import com.techcrack.DSA.Arrays.MaximumSubArray;
-import com.techcrack.DSA.Arrays.RotateBinaryArray;
-import com.techcrack.DSA.Arrays.UniqueAdd;
+import com.techcrack.DSA.Arrays.*;
 import org.junit.jupiter.api.Test;
 public class Tester {
 
@@ -100,5 +97,21 @@ public class Tester {
         assertEquals(6,msa.maxSubArray(actual));
         assertEquals(23,msa.maxSubArray(actual1));
         assertEquals(1,msa.maxSubArray(actual2));
+    }
+
+    @Test
+    public void reshapeTest(){
+
+        ReShapeMatrix rsm=new ReShapeMatrix();
+        int[][] actual={
+                {1,2},
+                {3,4}
+        };
+
+        int[][] expected={
+                {1,2,3,4}
+        };
+
+        assertArrayEquals(actual,rsm.matrixReshape(actual,2,4));
     }
 }
