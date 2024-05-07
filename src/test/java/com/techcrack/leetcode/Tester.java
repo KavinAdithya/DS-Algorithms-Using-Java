@@ -114,4 +114,15 @@ public class Tester {
 
         assertArrayEquals(actual,rsm.matrixReshape(actual,2,4));
     }
+
+    @Test
+    public void plusOneTest(){
+        PlusOne po=new PlusOne();
+
+        int[] actual={1,2,3};
+
+        int[] expected={1,2,4};
+
+        assertArrayEquals(expected,po.plusOne1(actual));
+    }
 }
