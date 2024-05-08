@@ -175,4 +175,30 @@ public class Tester {
 
         assertArrayEquals(expected,pai.productExceptSelf(actual));
     }
+
+    @Test
+    public void firstAndLast(){
+        FirstAndLastSearch fal=new FirstAndLastSearch();
+        int[] actual={5,7,7,8,8,10};
+
+        int[] expected={0,0};
+
+        assertArrayEquals(expected,fal.first(actual,5));
+    }
+
+
+    @Test
+    public void jumpGame(){
+        int[] actual={2,3,1,1,4};
+
+        int[] actual1={3,2,1,0,4};
+
+
+        JumpGame jg=new JumpGame();
+
+        assertTrue(jg.canJump(actual));
+
+        assertFalse(jg.canJump(actual1));
+    }
 }
+
