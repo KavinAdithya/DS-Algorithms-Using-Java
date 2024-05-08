@@ -159,4 +159,20 @@ public class Tester {
         smz.setZeroes1(actual);
         assertArrayEquals(expected,actual);
     }
+
+    @Test
+    public void productArray(){
+        ProductArrayItself pai=new ProductArrayItself();
+
+        int[] actual={
+                1,2,3,4
+        };
+
+        int[] expected={
+                24,12,8,6
+        };
+
+
+        assertArrayEquals(expected,pai.productExceptSelf(actual));
+    }
 }
