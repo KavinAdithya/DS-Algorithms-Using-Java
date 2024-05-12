@@ -200,5 +200,62 @@ public class Tester {
 
         assertFalse(jg.canJump(actual1));
     }
+
+
+    @Test
+    public void sortColorTest(){
+        SortColors sc=new SortColors();
+
+        int[] actual={2,0,2,1,1,0};
+
+        int[] expected={0,0,1,1,2,2};
+
+        sc.sortColors(actual);
+
+        assertArrayEquals(expected,actual);
+    }
+
+
+    @Test
+    public void rob(){
+        HouseRobber hr=new HouseRobber();
+
+        int[] actual={
+                1,2,3,1
+        };
+
+        int[] actual1={
+                2,7,9,3,1
+        };
+
+        int[] actual2={
+                2,1,1,2
+        };
+        int[] actual4= {
+                1, 1, 1
+        };
+        int[] actual3={1,3,1,3,100};
+        assertEquals(2,hr.rob(actual4));
+        assertEquals(103,hr.rob(actual3));
+        assertEquals(4,hr.rob(actual2));
+        assertEquals(4,hr.rob(actual));
+        assertEquals(12,hr.rob(actual1));
+    }
+
+    @Test
+    public void maxValueEquationTest(){
+        MaxValueEquation mvr=new MaxValueEquation();
+
+        int[][] actual={
+                {1,3},
+                {2,0},
+                {5,10},
+                {6,-10}
+        };
+
+
+        assertEquals(4,mvr.findMaxValueOfEquation(actual,1));
+    }
+
 }
 
