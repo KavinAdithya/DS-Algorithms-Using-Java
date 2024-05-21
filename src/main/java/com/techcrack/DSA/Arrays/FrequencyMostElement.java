@@ -26,7 +26,25 @@ public class FrequencyMostElement {
         return frequencyCount;
 
     }
+    public int maxFrequency1(int[] nums, int k) {
+        long countFrequency = 0;
+        long sumOfElements = 0 ;
+        int i = 0;
+        Arrays.sort(nums);
 
+        for(int d = 0; d < nums.length; d++){
+            sumOfElements += nums[d];
+
+            while((long)(d - i + 1) * nums[d] > sumOfElements + k){
+                sumOfElements -= nums[i];
+                i++;
+            }
+            if((d - i + 1) > countFrequency)
+                countFrequency = d - i + 1;
+        }
+
+        return (int)countFrequency;
+    }
     private int findFrequency(int[] num, long[] numSum, int targetIndex, long operation){
         int target = num[targetIndex];
         int start = 0;
