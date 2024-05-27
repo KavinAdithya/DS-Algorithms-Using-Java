@@ -63,8 +63,6 @@ public  class BookAllocation {
             else
                 pages += A[k];
         }
-        if(count > M)
-            return false;
-        return true;
+        return count <= M;
     }
 }
