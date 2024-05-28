@@ -2,32 +2,35 @@ package com.techcrack.DSA.Arrays;
 
 public class ReachNumber {
     public int reachNumber(int target) {
-        long start = 1;
         target = Math.abs(target);
-        long end=target,sum=0,step=0;
+
+        long start = 1;
+        long end = target;
+        long steps = 0;
+
 
         while(start <= end){
-            long mid = ( start + end ) / 2;
-            long sumOf = mid * (mid + 1 ) / 2;
-            if(sumOf == target)
+
+            long mid = (start + end) / 2;
+            long midSum = mid * (mid + 1) / 2;
+            if(midSum == target)
                 return (int)mid;
-            else if(sumOf > target){
-                step = mid;
-                sum = sumOf;
+            else if(midSum > target){
+                steps = mid;
                 end = mid - 1;
             }
             else
                 start = mid + 1;
         }
 
-        if((sum - target) % 2 == 0)
-            return (int)step;
-        else{
-            if(step%2 == 0)
-                return (int)++step;
-            else
-                return (int)step+2;
+        long moves = steps * (steps + 1) / 2;
+        //System.out.println("Steps = " + steps + " Move Sum " + moves);
+        if((moves - target ) % 2 == 0)
+            return (int)steps;
+        else {
+            if(steps % 2 == 0)
+                return (int)steps + 1;
+            return (int)steps + 2;
         }
     }
-
 }
