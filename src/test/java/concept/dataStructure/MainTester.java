@@ -1,9 +1,8 @@
 package concept.dataStructure;
 
-import com.techcrack.DSA.Arrays.*;
+import com.techcrack.DSA.ArraysAndBS.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 

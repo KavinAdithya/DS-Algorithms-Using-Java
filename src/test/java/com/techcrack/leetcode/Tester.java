@@ -2,10 +2,8 @@ package com.techcrack.leetcode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.techcrack.DSA.Arrays.*;
+import com.techcrack.DSA.ArraysAndBS.*;
 import org.junit.jupiter.api.Test;
-
-import java.util.Set;
 
 public class Tester {
 

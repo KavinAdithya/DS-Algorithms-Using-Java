@@ -1,6 +1,6 @@
 package concept.dataStructure;
 
-import com.techcrack.DSA.Arrays.MaximumYear;
+import com.techcrack.DSA.ArraysAndBS.MaximumYear;
 import org.junit.jupiter.api.*;
 
 import java.time.Duration;
