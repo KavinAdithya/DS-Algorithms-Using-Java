@@ -2,10 +2,10 @@ package com.techcrack.DSA.ArraysAndBS;
 
 public class MinimumRotated {
     //Brute force
-    public int findMin1(int[] nums) {
+    public int findMin1(int[] numb) {
         int min = Integer.MAX_VALUE;
 
-        for(int num : nums){
+        for(int num : numb){
             if(min > num)
                 min = num;
         }
@@ -14,20 +14,20 @@ public class MinimumRotated {
     }
 
     //Optimized Solution
-    public int findMin(int[] nums) {
+    public int findMin(int[] numb) {
         int minimum = Integer.MAX_VALUE;
 
         int start = 0;
-        int end = nums.length - 1;
+        int end = numb.length - 1;
 
         while(start <= end){
             int mid = (start + end) / 2;
 
-            if(nums[start] == nums[end] && start != end)
+            if(numb[start] == numb[end] && start != end)
                 end--;
-            else if(nums[mid] >= nums[start]){
-                if(nums[start] < minimum)
-                    minimum = nums[start];
+            else if(numb[mid] >= numb[start]){
+                if(numb[start] < minimum)
+                    minimum = numb[start];
                 start = mid + 1;
             }
             else
