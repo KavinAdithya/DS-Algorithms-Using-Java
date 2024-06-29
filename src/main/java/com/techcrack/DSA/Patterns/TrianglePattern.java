@@ -11,7 +11,7 @@ public class TrianglePattern {
             for(int k = 1; k < spaceLength; k++)
                 System.out.print(" ");
             for(int k = 0; k < starLength; k++)
-                System.out.print("*");
+                System.out.print(k + 1);
             if(decreases){
                 starLength--;
                 spaceLength++;
