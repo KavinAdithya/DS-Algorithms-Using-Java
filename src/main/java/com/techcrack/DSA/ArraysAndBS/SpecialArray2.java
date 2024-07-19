@@ -27,4 +27,40 @@ public class SpecialArray2 {
 
         return result;
     }
+
+
+
+    static class Solution {
+        public boolean[] isArraySpecial(int[] nums, int[][] queries) {
+            int length = nums.length;
+            int specialValue = 0;
+            int[] prefixSum = new int[length];
+
+            for(int k = 0; k < length - 1; k++){
+                if(nums[k] % 2 == nums[k + 1] % 2)
+                    specialValue++;
+                prefixSum[k + 1] = specialValue;
+            }
+
+            //System.out.println(Arrays.toString(prefixSum));
+
+            // for(int  k = 0; k < length - 1; k++)
+            //     prefixSum[k + 1] += prefixSum[k];
+
+            //System.out.println(Arrays.toString(prefixSum));
+
+            boolean[] resultList = new boolean[queries.length];
+
+            int index = -1;
+
+            for(int[] query : queries){
+                index++;
+                if(prefixSum[query[0]] - prefixSum[query[1]] == 0 )
+                    resultList[index] = true;
+            }
+
+
+            return resultList;
+        }
+    }
 }
