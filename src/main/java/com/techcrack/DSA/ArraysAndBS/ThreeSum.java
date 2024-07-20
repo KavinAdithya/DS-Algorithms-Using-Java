@@ -29,6 +29,7 @@ public class ThreeSum {
 
 
     //Optimized two pointer and sorting solution
+
     public List<List<Integer>> threeSum1(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
 
