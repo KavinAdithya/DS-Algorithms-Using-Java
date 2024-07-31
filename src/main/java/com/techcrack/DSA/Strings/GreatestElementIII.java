@@ -73,7 +73,7 @@ public class GreatestElementIII {
             array[i] = a1[i - startIndex];
     }
 
-    public int nextGreaterElement(int n) {
+    public int nextGreaterElement1(int n) {
         int[] digits = integerToArray(n);
         int startIndex = startingPointer(digits);
 
