@@ -2,7 +2,7 @@ package com.techcrack.DSA.WeeklyContest.Week410;
 
 import java.util.List;
 
-class Solution {
+class SnakeGrid {
     public int finalPositionOfSnake(int n, List<String> commands) {
       
 
