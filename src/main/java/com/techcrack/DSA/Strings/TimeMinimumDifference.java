@@ -2,7 +2,7 @@ package com.techcrack.DSA.Strings;
 
 import java.util.List;
 
-public class TimeMinimuDifference {
+public class TimeMinimumDifference {
     public int findMinDifference1(List<String> timePoints) {
         int minimumTime = Integer.MAX_VALUE;
         
