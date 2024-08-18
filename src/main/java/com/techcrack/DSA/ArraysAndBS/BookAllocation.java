@@ -18,7 +18,7 @@ public  class BookAllocation {
                 a[i]=sc.nextInt();
             }
             int m=sc.nextInt();
-            Solution ob = new Solution();
+            SP2 ob = new SP2();
             System.out.println(BookAllocation.findPages(a,n,m));
         }
     }
