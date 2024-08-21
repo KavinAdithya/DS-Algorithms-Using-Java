@@ -68,4 +68,39 @@ class PalindromeII {
 
         return true;
     }
+
+
+    public boolean checkPalindromeFormation(String a, String b) {
+
+        return isSubstringPalindrome(a, b) || isSubstringPalindrome(b, a);
+    }
+
+    private boolean isSubstringPalindrome(String a, String b) {
+        int aPointer = 0;
+
+        int bPointer = b.length() - 1;
+
+        while (aPointer < bPointer) {
+            if (a.charAt(aPointer) != b.charAt(bPointer))
+                break;
+            aPointer++;
+            bPointer--;
+        }
+
+        if (aPointer >= bPointer)
+            return true;
+
+        return isPalindrome1(a, aPointer, bPointer) || isPalindrome1(b, aPointer, bPointer);
+    }
+
+    private boolean isPalindrome1(String s, int start, int end) {
+        while (start < end) {
+            if (s.charAt(start) != s.charAt(end))
+                return false;
+            start++;
+            end--;
+        }
+
+        return true;
+    }
 }
