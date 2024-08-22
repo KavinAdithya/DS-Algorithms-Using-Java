@@ -47,7 +47,7 @@ class SentencesSimilarity {
         return true;
     }
 
-    public boolean areSentencesSimilar(String sentence1, String sentence2) {
+    public boolean areSentencesSimilar2(String sentence1, String sentence2) {
         String[] words1 = sentence1.split(" ");
         String[] words2 = sentence2.split(" ");
 
@@ -55,7 +55,7 @@ class SentencesSimilarity {
         int length2 = words2.length;
 
         if (length1 > length2)
-            return areSentencesSimilar(sentence2, sentence1);
+            return areSentencesSimilar2(sentence2, sentence1);
 
         int i = 0;
 
@@ -63,6 +63,27 @@ class SentencesSimilarity {
             i++;
 
         while (i < length1 && words1[i].equals(words2[i + length2 - length1]))
+            i++;
+
+        return i == length1;
+    }
+
+    public boolean areSentencesSimilar(String sentence1, String sentence2) {
+        String[] s1 = sentence1.split(" ");
+        String[] s2 = sentence2.split(" ");
+
+        int length1 = s1.length;
+        int length2 = s2.length;
+
+        if (length1 > length2)
+            return areSentencesSimilar(sentence2, sentence1);
+
+        int i = 0;
+
+        while (i < length1 && s1[i].equals(s2[i]))
+            i++;
+
+        while (i < length1 && s1[i].equals(s2[length2 - (length1 - i)]))
             i++;
 
         return i == length1;

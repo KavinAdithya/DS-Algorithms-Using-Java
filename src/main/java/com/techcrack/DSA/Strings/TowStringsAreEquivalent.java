@@ -17,7 +17,7 @@ public class TowStringsAreEquivalent {
         return word1String.toString().equals(word2String.toString());
     }
 
-    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+    public boolean arrayStringsAreEqual2(String[] word1, String[] word2) {
         int i = 0, characterPointer1 = 0;
         int j = 0, characterPointer2 = 0;
 
@@ -42,5 +42,32 @@ public class TowStringsAreEquivalent {
         }
 
         return i == length1 && j == length2;
+    }
+
+    public boolean arrayStringsAreEqual3(String[] word1, String[] word2) {
+        StringBuilder w1 = new StringBuilder();
+        StringBuilder w2 = new StringBuilder();
+
+        for (String word : word1)
+            w1.append(word);
+
+        for (String word : word2)
+            w2.append(word);
+
+        //return isEqual(w1, w2);
+
+        return  w1.toString().equals(w2.toString());
+    }
+
+    private boolean isEqual(StringBuilder s1, StringBuilder s2) {
+        if (s1.length() != s2.length())
+            return false;
+
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i))
+                return false;
+        }
+
+        return true;
     }
 }
