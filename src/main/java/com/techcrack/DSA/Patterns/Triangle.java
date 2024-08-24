@@ -7,9 +7,9 @@ public class Triangle {
 
         for (int i = 1; i < overAllLength; i += 2 ) {
             for (int j = 1; j < length; j++)
-                System.out.print(" ");
+                System.out.print("  ");
             for (int k = 1; k < i + 1; k++)
-                System.out.print("*");
+                System.out.print("* ");
             System.out.println();
             length--;
         }
