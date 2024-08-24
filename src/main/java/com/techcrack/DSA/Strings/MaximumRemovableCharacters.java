@@ -46,7 +46,7 @@ class MaximumRemovableCharacters {
 
         // Removing characters virtually
         for (int i = 0; i < index + 1; i++) 
-     `01       characterHashing[removable[i]] = true;
+            characterHashing[removable[i]] = true;
         
         // Taking two pointers for pointing the two strings
         int i = 0;
