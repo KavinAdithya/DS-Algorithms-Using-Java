@@ -10,7 +10,7 @@ class MaximumRemovableCharacters {
        *  @return the k the element which means number of characters are removed but still it will stil satisfy the substring
        *  Using Binary Search algorithm to find the kth element 
 */
-    public int maximumRemovals(String s, String p, int[] removable) {
+    public int maximumRemovals1(String s, String p, int[] removable) {
         
         // Start Index
         int start = 0;
@@ -46,7 +46,7 @@ class MaximumRemovableCharacters {
 
         // Removing characters virtually
         for (int i = 0; i < index + 1; i++) 
-            characterHashing[removable[i]] = true;
+     `01       characterHashing[removable[i]] = true;
         
         // Taking two pointers for pointing the two strings
         int i = 0;
@@ -61,6 +61,45 @@ class MaximumRemovableCharacters {
         }
 
         // If the substring index reached end of index means s forms p as substring
+        return j == p.length();
+    }
+
+
+    public int maximumRemovals(String s, String p, int[] removable) {
+        int start = 1;
+        int end = removable.length;
+        int ans = 0;
+
+        while (start <= end) {
+            int mid = (start + end) / 2;
+
+            if (isSubsequence(s, p, removable, mid)) {
+                ans = mid;
+                start = mid + 1;
+            }
+            else
+                end = mid - 1;
+        }
+
+        return ans;
+    }
+
+
+    public boolean isSubsequence(String s, String p, int[] removable, int count) {
+        boolean[] characterHashing = new boolean[s.length()];
+
+        for (int i = 0; i < count; i++)
+            characterHashing[removable[i]] = true;
+
+        int i = 0;
+        int j = 0;
+
+        while (i < s.length() && j < p.length()) {
+            if (! characterHashing[i] && s.charAt(i) == p.charAt(j))
+                j++;
+            i++;
+        }
+
         return j == p.length();
     }
 
