@@ -3,7 +3,7 @@ package com.techcrack.DSA.Strings;
 import java.util.Arrays;
 
 public class GreatestElementIII {
-    public int nextGreaterElement(int n) {
+    public int nextGreaterElement3(int n) {
         String s = String.valueOf(n);
 
         int[] digitsArray = new int[s.length()];
@@ -164,5 +164,89 @@ public class GreatestElementIII {
         }
 
         return length;
+    }
+
+
+    public int nextGreaterElement(int n) {
+        int[] digitArray = divideDigitArray(n);
+
+        int findSwappedIndex = findCorrectIndexSwap(digitArray);
+
+        sortArray(digitArray, findSwappedIndex );
+
+        long answer = convertIntoLong(digitArray);
+
+
+
+        if (Integer.MAX_VALUE < answer || answer <= n)
+            return -1;
+        return (int)answer;
+    }
+
+    public int[] divideDigitArray(int n) {
+        String s = String.valueOf(n);
+
+        int[] digitArray = new int[s.length()];
+
+        for (int i = 0; i < s.length(); i++)
+            digitArray[i] = s.charAt(i) - '0';
+
+        return digitArray;
+    }
+
+    public int findCorrectIndexSwap(int[] digitArray) {
+
+        for (int i = digitArray.length - 1; i > 0; i--) {
+            if (digitArray[i] > digitArray[i - 1]) {
+                swap(digitArray, i - 1);
+                return i;
+            }
+        }
+
+        return 0;
+    }
+
+    public void swap(int[] digitArray, int source) {
+
+        int destination = findAnyOther(digitArray, source);
+
+        digitArray[source] = digitArray[source] ^ digitArray[destination];
+        digitArray[destination] = digitArray[source] ^ digitArray[destination];
+        digitArray[source] = digitArray[source] ^ digitArray[destination];
+    }
+
+    public int findAnyOther(int[] digitArray, int targetIndex) {
+        int target = digitArray[targetIndex];
+        int index = targetIndex + 1;
+
+        for (int i = targetIndex + 1; i < digitArray.length; i++) {
+            if (digitArray[index] > digitArray[i] && digitArray[i] > target)
+                index = i;
+        }
+
+        return index;
+    }
+
+    public void sortArray(int[] digitArray, int startingIndex) {
+        int length = digitArray.length;
+
+        int[] dup = new int[length - startingIndex];
+
+        for (int i = 0; i < dup.length; i++) {
+            dup[i] = digitArray[i + startingIndex];
+        }
+
+        Arrays.sort(dup);
+
+        for (int i = 0; i < dup.length; i++)
+            digitArray[i + startingIndex] = dup[i];
+    }
+
+    public long convertIntoLong(int[] digitArray) {
+        long result = 0;
+
+        for (int digit : digitArray)
+            result = result * 10 + digit;
+        return result;
     }
 }
