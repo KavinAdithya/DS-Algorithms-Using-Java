@@ -90,7 +90,6 @@ class MaximumRemovableCharacters {
 
         for (int i = 0; i < count; i++)
             characterHashing[removable[i]] = true;
-
         int i = 0;
         int j = 0;
 
