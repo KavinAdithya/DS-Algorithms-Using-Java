@@ -52,4 +52,48 @@ class MultiplyStrings {
 
     }
 
+    public String multiply2(String num1, String num2) {
+        int length1 = num1.length();
+        int length2 = num2.length();
+
+        int[] num1Digit = stringToArray(num1, length1);
+        int[] num2Digit = stringToArray(num2, length2);
+
+        int[] result = new int[length1 + length2];
+
+        for (int i = length2 - 1; i > -1; i--) {
+
+            for (int j = length1 - 1 ; j > -1; j--) {
+                result[i + j + 1] += num1Digit[j] * num2Digit[i];
+
+                result[i + j] += (result[i + j + 1] / 10);
+
+                result[i + j + 1] %= 10;
+            }
+        }
+
+        StringBuilder resultString = new StringBuilder();
+        boolean first = false;
+
+        for (int i = 0; i < result.length; i++) {
+            if ( ! first && result[i] != 0)
+                first = true;
+            if (first)
+                resultString.append("" + result[i]);
+        }
+
+
+
+        return resultString.isEmpty() ? "0" : resultString.toString();
+    }
+
+    public int[] stringToArray(String s, int length) {
+        int[] array = new int[length];
+
+        for (int i = 0; i < length; i++)
+            array[i] = s.charAt(i) - '0';
+
+        return  array;
+    }
+
 }
