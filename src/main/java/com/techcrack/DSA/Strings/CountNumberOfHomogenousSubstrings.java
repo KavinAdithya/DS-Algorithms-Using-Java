@@ -20,4 +20,45 @@ class CountNumberOfHomogenousSubstrings {
 
         return (int) (sum % 1_000_000_007);
     }
+
+    // Brute Force
+    public int countHomogenous1(String s) {
+        int MODULO = 1_000_000_007;
+
+        int homogenousCount = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            int j = i;
+
+            for (; j < s.length(); j++) {
+                if (s.charAt(i) != s.charAt(j))
+                    break;
+            }
+
+            homogenousCount += j - i;
+        }
+
+        return homogenousCount;
+    }
+
+    public int countHomogenous4(String s) {
+        int i = 0;
+        int j = 0;
+        long MODULO = 1_000_000_007;
+        int length = s.length();
+        long result = 0;
+
+        while (j < length) {
+            if (s.charAt(i) == s.charAt(j))
+                result += (j - i + 1);
+            else {
+                result++;
+                i = j;
+            }
+            j++;
+        }
+
+        return (int) (result % MODULO);
+    }
 }
