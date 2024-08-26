@@ -49,4 +49,25 @@ class SubstringWith1s {
 
         return (int) (sum % 1_000_000_007);
     }
+
+    public int numSub2(String s) {
+        long ones = 0;
+        long substringCount = 0;
+        long MODULO = 1_000_000_007;
+
+        for (int i = 0; i < s.length(); i++) {
+            int value = s.charAt(i) - '0';
+
+            if (value == 1)
+                ones++;
+            else {
+                substringCount += (ones * (ones + 1) / 2);
+                ones = 0;
+            }
+        }
+
+        substringCount += (ones * (ones + 1) / 2);
+
+        return (int) ( substringCount % MODULO);
+    }
 }
