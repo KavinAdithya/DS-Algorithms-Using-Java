@@ -67,4 +67,51 @@ class SubarraySumEquals {
         return subArrayCount;
 
     }
+
+    // Brute force
+    public int subarraySum3(int[] nums, int k) {
+        int count = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 0;
+
+            for (int j = i; j < nums.length; j++) {
+                sum += nums[j];
+
+                if (sum == k)
+                    count++;
+            }
+
+
+        }
+
+        return count;
+    }
+
+    public int subarraySum4(int[] nums, int k) {
+        Map<Integer, Integer> hashing = new HashMap<>();
+
+        hashing.put(0, 1);
+
+        int prefixSum = 0;
+        int result = 0;
+
+        for (int num : nums) {
+            prefixSum += num;
+
+            int required = prefixSum - k;
+
+            if (hashing.containsKey(required))
+                result += hashing.get(required);
+
+            int value = 1;
+
+            if (hashing.containsKey(prefixSum))
+                value += hashing.get(prefixSum);
+
+            hashing.put(prefixSum, value);
+        }
+
+        return result;
+    }
 }

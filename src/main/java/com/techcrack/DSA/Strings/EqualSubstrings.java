@@ -120,4 +120,52 @@ class EqualSubstrings {
 
         return false;
     }
+
+    // Brute Force
+    public int equalSubstring4(String s, String t, int maxCost) {
+        int maximumLength = 0;
+        int length = s.length();
+
+        for (int i = 0; i < length; i++) {
+            int cost = 0;
+
+            for (int j = i; j < length; j++) {
+                cost += Math.abs(s.charAt(j) - t.charAt(j));
+
+                if (cost <= maxCost && (j - i + 1) > maximumLength)
+                    maximumLength = j - i + 1;
+
+                if (cost > maxCost)
+                    break;
+            }
+        }
+
+        return maximumLength;
+    }
+
+
+    public int equalSubstring5(String s, String t, int maxCost) {
+        int leftPointer = 0;
+        int rightPointer = 0;
+        int length = s.length();
+        int maximumLength = 0;
+        int cost = 0;
+
+        while (rightPointer < length) {
+
+            cost += Math.abs(s.charAt(rightPointer) - t.charAt(rightPointer));
+
+            while (leftPointer <= rightPointer && cost > maxCost) {
+                cost -= Math.abs(s.charAt(leftPointer) - t.charAt(leftPointer));
+                leftPointer++;
+            }
+
+            if (rightPointer - leftPointer + 1 > maximumLength)
+                maximumLength = rightPointer - leftPointer + 1;
+
+            rightPointer++;
+        }
+
+        return maximumLength;
+    }
 }
