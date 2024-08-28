@@ -4,7 +4,7 @@ class SegmentOnes {
 
     // Time Complexity -> O(n)
     // Space Complexity -> O(1)
-    public boolean checkOnesSegment(String s) {
+    public boolean checkOnesSegment3(String s) {
         int segmentOnes = 0;
         int segmentSum = 0;
 
@@ -55,5 +55,14 @@ class SegmentOnes {
         }
 
         return segmentOnes < 2;
+    }
+
+    public boolean checkOnesSegment4(String s) {
+        for (int i = 2; i < s.length(); i++) {
+            if (s.charAt(i) == '1' && s.charAt(i - 1) == '0')
+                return false;
+        }
+
+        return true;
     }
 }
