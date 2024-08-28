@@ -56,4 +56,55 @@ class BinarySubArray {
 
         return count;
     }
+
+    // Brute Force
+    public int numSubarraysWithSum3(int[] nums, int goal) {
+        int subarrayCount = 0;
+        int length = nums.length;
+
+        for (int i = 0; i < length; i++) {
+            int localGoal = 0;
+            int j = i;
+
+            for (; j < length; j++) {
+                localGoal += nums[j];
+
+                if (localGoal == goal)
+                    subarrayCount++;
+
+                if (localGoal > goal)
+                    break;
+            }
+
+        }
+
+        return subarrayCount;
+    }
+
+    public int numSubarraysWithSum56(int[] nums, int goal) {
+        return atMost1(nums, goal) - atMost1(nums, goal - 1);
+    }
+
+    private int atMost1(int[] nums, int goal) {
+        int i = 0;
+        int j = 0;
+        int sum = 0;
+
+        int count = 0;
+        int length = nums.length;
+
+        while (j < length) {
+            sum += nums[j];
+
+            while (i <= j && sum > goal) {
+                sum -= nums[i];
+                i++;
+            }
+
+            count += (j - i + 1);
+            j++;
+        }
+
+        return count;
+    }
 }

@@ -81,4 +81,20 @@ class ShiftingLetters {
 
         return result.reverse().toString();
     }
+
+    public String shiftingLetters(String s, int[] shifts) {
+        int length = shifts.length;
+
+        char[] sArray = s.toCharArray();
+        long prefixSum = 0;
+
+        for (int i = length - 1; i > -1; i--) {
+            prefixSum += shifts[i];
+
+            sArray[i] = (char) (((sArray[i] - 'a' + prefixSum) % 26) + 'a');
+        }
+
+        return new String(sArray);
+    }
+
 }
