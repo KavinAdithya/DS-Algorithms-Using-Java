@@ -86,4 +86,50 @@ public class TimeMinimumDifference {
         return Math.min(1440 - previousTime + firstTime, minimumTime);
 
     }
+
+    public int findMinDifference(List<String> timePoints) {
+        boolean[] timeHolder = new boolean[1440];
+
+        for (String time : timePoints) {
+            String[] t = time.split(":");
+
+            int hours = Integer.parseInt(t[0]);
+            int minutes = hours * 60 +  Integer.parseInt(t[1]);
+
+            if (timeHolder[minutes])
+                return 0;
+
+            timeHolder[minutes] = true;
+        }
+
+        return minimumDifference(timeHolder);
+    }
+
+    private int minimumDifference(boolean[] timeHolder) {
+        int firstTime = -1;
+        int previousTime = -1;
+
+
+        int minimumTimeDifference = 1441;
+
+        for (int i = 0; i < 1440; i++) {
+            if (timeHolder[i]) {
+                if (previousTime == -1) {
+                    firstTime = i;
+                    previousTime = i;
+                }
+                else  {
+                    if (i - previousTime < minimumTimeDifference)
+                        minimumTimeDifference = i - previousTime;
+
+                    previousTime = i;
+                }
+            }
+        }
+
+        if (1440 - previousTime + firstTime < minimumTimeDifference)
+            return 1440 - previousTime + firstTime;
+
+        return minimumTimeDifference;
+    }
 }
