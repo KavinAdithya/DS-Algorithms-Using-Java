@@ -47,7 +47,7 @@ public class TimeMinimumDifference {
     // Bucket Method
     // Time Complexity -> O(n)
     // Space Complexity -> O(1440)
-    public int findMinDifference(List<String> timePoints) {
+    public int findMinDifference5(List<String> timePoints) {
         boolean[] timeOccured = new boolean[1440]; // 24 * 60
 
         for (String time : timePoints) {
