@@ -40,4 +40,45 @@ class RegularExpressionMatching {
         
         return false;        
     }
+
+    class Solution {
+        public boolean isMatch(String s, String p) {
+            return isPatternValid(s, p, 0, 0);
+        }
+
+
+        private boolean isPatternValid(String s, String p, int i, int j) {
+            int length1 = s.length();
+            int length2 = p.length();
+
+            if (i >= length1 && j >= length2)
+                return true;
+
+            if (j >= length2)
+                return false;
+
+            char ch = p.charAt(j);
+
+            if (i  >= length1) {
+                if (j + 1 < length2 && p.charAt(j + 1) == '*' )
+                    return isPatternValid(s, p, i, j + 2);
+                else
+                    return false;
+            }
+
+            char ch1 = s.charAt(i);
+
+            if (j + 1 < length2 && p.charAt(j + 1) == '*') {
+
+                boolean result = false;
+                if (ch == ch1 || ch == '.')
+                    result = result || isPatternValid(s, p, i + 1, j);
+                return result || isPatternValid(s, p, i, j + 2);
+            }
+
+            if (ch == ch1 || ch == '.')
+                return isPatternValid(s, p, i + 1, j + 1);
+            return false;
+        }
+    }
 }
