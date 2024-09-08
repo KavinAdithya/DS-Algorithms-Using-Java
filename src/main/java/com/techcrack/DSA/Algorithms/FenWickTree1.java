@@ -1,6 +1,6 @@
 package com.techcrack.DSA.Algorithms;
 
-public class FenWickTree {
+public class FenWickTree1 {
     public static int rangeSum(int[] array, int start, int end){
         int[] sumArray = new int[array.length + 1];
 
