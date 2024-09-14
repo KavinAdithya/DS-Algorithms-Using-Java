@@ -3,8 +3,17 @@ package com.techcrack.DSA.Patterns;
 public class HourGlassPattern {
 
     public static void hourGlassPattern(int length) {
+        // HourGlassPattern
+        System.out.println("\nHourGlassPattern \n");
         printTop(length);
-        printBottom(length);
+        printBottom(length, true);
+
+
+
+        // SandGlass Pattern
+        System.out.println("\nSandGlassPattern \n");
+        printBottom(length, false);
+        printTop(length);
     }
 
     static void printTop(int length) {
@@ -24,9 +33,14 @@ public class HourGlassPattern {
         }
     }
 
-    static void printBottom(int length) {
+    static void printBottom(int length, boolean isHourGlass) {
 
-        for (int i = 1; i < length + 1; i++) {
+        int end = length;
+
+        if (isHourGlass)
+            end++;
+
+        for (int i = 1; i < end ; i++) {
 
             for (int j = 1; j < i + 1; j++)
                 System.out.print("*");
