@@ -52,4 +52,40 @@ class LongestCommonPrefix {
         }
         return s.toString();
     }
+
+    public String longestCommonPrefix3  (String[] strs) {
+        int indexMin = strs[0].isEmpty() ? -1 : 0;
+
+        if (indexMin == -1)
+            return "";
+
+        for (int i = 1; i < strs.length; i++) {
+            if (strs[indexMin].length() > strs[i].length())
+                indexMin = i;
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < strs[indexMin].length(); i++) {
+            boolean isNotMatch = false;
+
+            char ch = strs[indexMin].charAt(i);
+
+            for (String s : strs) {
+                if (ch != s.charAt(i)) {
+                    isNotMatch = true;
+                    break;
+                }
+            }
+
+            if (isNotMatch)
+                break;
+
+            result.append(ch);
+        }
+
+        return result.toString();
+    }
 }
+
+
