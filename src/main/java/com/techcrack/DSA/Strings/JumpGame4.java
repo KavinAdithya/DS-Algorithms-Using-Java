@@ -23,7 +23,7 @@ public class JumpGame4 {
         return i == length;
     }
 
-    public boolean canReach(String s, int minJump, int maxJump) {
+    public boolean canReach2(String s, int minJump, int maxJump) {
         Deque<Integer> deque = new ArrayDeque<>();
 
         deque.offer(0);
@@ -44,6 +44,59 @@ public class JumpGame4 {
                 }
             }
             // System.out.println(deque);
+        }
+
+        return false;
+    }
+
+    public boolean canReach3(String s, int minJump, int maxJump) {
+        Deque<Integer> jumps = new ArrayDeque<>();
+
+        jumps.offer(0);
+
+        while ( ! jumps.isEmpty()) {
+            int currentPosition = jumps.poll();
+
+            int startIndex = Math.min(currentPosition + minJump, s.length());
+            int endIndex = currentPosition + maxJump < s.length() ? currentPosition + maxJump : s.length() - 1;
+
+            for (int i = startIndex ; i < endIndex + 1; i++) {
+                if (s.charAt(i) == '0') {
+                    jumps.push(i);
+
+                    if (i == s.length() - 1)
+                        return true;
+                }
+            }
+        }
+
+        return false;
+   }
+
+
+    public boolean canReach4(String s, int minJump, int maxJump) {
+        Deque<Integer> jump = new ArrayDeque<>();
+
+        jump.offer(0);
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '0') {
+                while (!jump.isEmpty() &&  i > jump.peek() + maxJump)
+                    jump.poll();
+
+
+                if (jump.isEmpty())
+                    return false;
+
+                int prevPos = jump.peek();
+
+                if (prevPos + minJump <= i) {
+                    jump.offer(i);
+
+                    if (i == s.length() - 1)
+                        return true;
+                }
+            }
         }
 
         return false;
