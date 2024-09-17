@@ -53,7 +53,7 @@ class CountItemsMatchingRule {
 
     }
 
-    public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+    public int countMatches4(List<List<String>> items, String ruleKey, String ruleValue) {
         int answer = 0;
 
         for (List<String> item : items) {
@@ -67,5 +67,22 @@ class CountItemsMatchingRule {
 
         return answer;
 
+    }
+
+    public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+        int index = switch (ruleKey) {
+            case "type" -> 0;
+            case "color" -> 1;
+            default -> 2;
+        };
+
+        int itemMatch = 0;
+
+        for (List<String> item : items) {
+            if (item.get(index).equals(ruleValue))
+                itemMatch++;
+        }
+
+        return itemMatch;
     }
 }
