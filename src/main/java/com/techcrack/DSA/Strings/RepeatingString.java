@@ -75,7 +75,7 @@ class RepeatingString {
     }
 
 
-    public int repeatedStringMatch(String a, String b) {
+    public int repeatedStringMatch4(String a, String b) {
         boolean[] bucket = new boolean[26];
 
         for (char ch : a.toCharArray())
@@ -98,4 +98,71 @@ class RepeatingString {
 
         return -1;
     }
+
+    public int repeatedStringMatch5(String a, String b) {
+        int length1 = a.length();
+        int length2 = b.length();
+
+        int times = length2 / length1;
+
+        StringBuilder repeatString = new StringBuilder();
+
+        repeatString.append(a.repeat(times));
+
+
+        for (int i = 0; i < 3; i++) {
+            if (isEqual(repeatString, b))
+                return times + i;
+            repeatString.append(a);
+        }
+
+        return -1;
+    }
+
+    private boolean isEqual(StringBuilder rs, String s) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < s.length() && j < rs.length()) {
+            if (rs.charAt(j) != s.charAt(i)) {
+                i = -1;
+                j =  k;
+                k++;
+            }
+            i++;
+            j++;
+        }
+        return i == s.length();
+    }
+
+    public int repeatedStringMatch6(String a, String b) {
+        boolean[] bucket = new boolean[26];
+
+        for (char ch : a.toCharArray())
+            bucket[ch - 'a'] = true;
+
+        for (char ch : b.toCharArray())
+            if ( ! bucket[ch - 'a'])
+                return -1;
+
+        int times = b.length() / a.length();
+
+        StringBuilder repeatString = new StringBuilder();
+
+        for (int i = 0; i < times; i++)
+            repeatString.append(a);
+
+
+        for (int i = 0; i < 3; i++) {
+            // if (isEqual(repeatString, b))
+
+            if (repeatString.toString().contains(b))
+                return times + i;
+            repeatString.append(a);
+        }
+
+        return -1;
+    }
+
 }
