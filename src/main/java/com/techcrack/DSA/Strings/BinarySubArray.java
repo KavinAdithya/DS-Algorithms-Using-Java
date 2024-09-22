@@ -1,5 +1,8 @@
 package com.techcrack.DSA.Strings;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class BinarySubArray {
 
     // Brute Force Solution -> O(n^2)
@@ -106,5 +109,22 @@ class BinarySubArray {
         }
 
         return count;
+    }
+
+    public int numSubarraysWithSum6(int[] nums, int goal) {
+        Map<Integer, Integer> hashPrefix = new HashMap<>();
+
+        int prefixSum = 0;
+        hashPrefix.put(0, 1);
+        int result = 0;
+
+        for (int num : nums) {
+            prefixSum += num;
+            result += hashPrefix.getOrDefault(prefixSum - goal, 0);
+
+            hashPrefix.put(prefixSum, hashPrefix.getOrDefault(prefixSum, 0) + 1);
+        }
+
+        return result;
     }
 }
