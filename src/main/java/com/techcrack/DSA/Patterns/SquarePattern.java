@@ -40,6 +40,20 @@ public class SquarePattern {
 
 
     public static void main(String[] args) {
-        squarePattern(4);
+        optimizedSquare(4);
+    }
+
+    private static void optimizedSquare(int n) {
+        int originalN = n;
+        n = n * 2 - 1;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int value = originalN - Math.min(Math.min(i, j), Math.min(n - i - 1, n - j - 1));
+                System.out.print(value + " ");
+            }
+
+            System.out.println();
+        }
     }
 }
