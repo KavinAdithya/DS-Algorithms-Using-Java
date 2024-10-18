@@ -2,12 +2,12 @@ package concept.dataStructure;
 
 public class ArrayList<T> {
 
-    private T array[];
-    private int n=-1;
+    private T[] array;
+    private int n = -1;
     ArrayList(int n) {
-        array=(T[])new Object[n];
+        array = (T[])new Object[n];
     }
-    ArrayList(){array=(T[])new Object[10];
+    ArrayList(){array= (T[])new Object[10];
     }
     public boolean add(T value){
         array[++n]=value;

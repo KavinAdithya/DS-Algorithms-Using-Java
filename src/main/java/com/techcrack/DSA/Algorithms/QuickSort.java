@@ -3,6 +3,7 @@ package com.techcrack.DSA.Algorithms;
 import java.util.Arrays;
 
 public class QuickSort {
+
     static void sort(int[] array, int low, int high) {
 
         if (low >= high)
@@ -33,7 +34,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] array = {0, 1, 9, 2, 8, 3, 7, 4, 6, 5};
+        int[] array = {5, 10, 15, 21, 35, 14, 19};
         sort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }

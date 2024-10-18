@@ -1,6 +1,6 @@
 package concept.dataStructure;
 
-import com.techcrack.DSA.ArraysAndBS.*;
+import com.techcrack.DSA.ArrayBinarySearch.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
