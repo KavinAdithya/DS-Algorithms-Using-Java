@@ -35,4 +35,31 @@ class ThirdLargestValue {
 
         return third;
     }
+
+    public int thirdMax1(int[] nums) {
+
+        long min = Integer.MIN_VALUE;
+        min--;
+        long first = min;
+        long second = min;
+        long third = min;
+        for (long num : nums) {
+            if (num > first) {
+                third = second;
+                second = first;
+                first = num;
+            }
+
+            if (num != first && num > second) {
+                third = second;
+                second = num;
+            }
+
+            if (num != first && num != second && num > third)
+                third = num;
+        }
+
+
+        return third != min ? (int) third : (int) first;
+    }
 }
