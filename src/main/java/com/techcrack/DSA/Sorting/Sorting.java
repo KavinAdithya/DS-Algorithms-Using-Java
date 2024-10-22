@@ -18,14 +18,13 @@ class Sorting
 			int arr[] = {2,3, 5, 1, 45, 23};
             int n = 6;
 
-			
-			Solution.quickSort(arr,0,n-1);
+            Solution1.quickSort(arr,0,n-1);
 			printArray(arr);
 } }
 // } Driver Code Ends
 
 
-class Solution {
+class Solution1 {
     //Function to sort an array using quick sort algorithm.
     static void quickSort(int arr[], int low, int high) {
         if (low >= high)
