@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class InsertionSort {
     public static void main(String[] args) {
         int[] array = {1, 3, -1, 89, 355, 2};
-        insertionSort(array);
+        sort(array);
 
         System.out.println(Arrays.toString(array));
     }
@@ -30,6 +30,27 @@ public class InsertionSort {
                     break;
             }
         }
+    }
+
+
+    static void sort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int value = array[i];
+
+            int index = sortPartial(array, value, i);
+
+            array[index] = value;
+        }
+    }
+
+    static int sortPartial(int[] array, int value, int end) {
+        for (int i = end - 1; i > -1; i--) {
+            if (value > array[i])
+                return i + 1;
+            array[i + 1] = array[i];
+        }
+
+        return 0;
     }
 
     // Swap the two elements based on index
