@@ -1,8 +1,9 @@
 package com.techcrack.DSA.Strings;
 
-class Solution {
+public class MinimumOperationFenwickTree {
     public int makeStringSorted(String s) {
         int MOD = 1_000_000_007;
+        FenwickTree fenwickTree = new FenwickTree(26);
 
         long result = 0;
 
@@ -12,7 +13,9 @@ class Solution {
 
         for (char ch : sArr) {
             freq[ch - 'a']++;
-        }        
+
+            fenwickTree.update(ch - 'a', 1);
+        }
         int n = sArr.length;
 
         long[] fact = computFactorial(n, MOD);
@@ -20,11 +23,9 @@ class Solution {
         for (int i = 0; i < n; i++) {
             char ch = sArr[i];
 
-            int totFreq = 0;
-            long perms = fact[n - i - 1]; 
-            for (int j = 0; j < ch - 'a'; j++) {
-                totFreq += freq[j];
-            }
+            int totFreq = fenwickTree.query(ch - 'a');
+            long perms = fact[n - i - 1];
+
 
             for (int f : freq) {
                 if (f > 1)
@@ -38,16 +39,12 @@ class Solution {
 
 
             freq[ch - 'a']--;
+            fenwickTree.update(ch - 'a',  -1);
         }
 
         return (int)result;
     }
 
-    public static void main(String[] args) {
-        String s = "bbaca";
-
-        System.out.println(new Solution().makeStringSorted(s)); // Output: 5
-    }
 
 
     protected long[] computFactorial(int n, int MOD) {
@@ -56,7 +53,7 @@ class Solution {
         fact[0] = 1;
 
         for (int i = 1; i <= n; i++) {
-            fact[i] = fact[i - 1] * i % MOD; 
+            fact[i] = fact[i - 1] * i % MOD;
         }
 
         return fact;
@@ -73,7 +70,7 @@ class Solution {
         while (y > 0) {
             if ((y & 1) == 1)
                 result = result * x % MOD;
-            
+
             x = x * x % MOD;
             y >>= 1;
         }
