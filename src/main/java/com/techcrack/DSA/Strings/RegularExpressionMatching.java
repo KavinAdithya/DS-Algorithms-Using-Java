@@ -1,6 +1,9 @@
 package com.techcrack.DSA.Strings;
 
-class RegularExpressionMatching {
+import java.util.HashMap;
+import java.util.Map;
+
+public class RegularExpressionMatching {
     public boolean isMatch(String s, String p) {
         return isPatternMatches(s, p, s.length() - 1, p.length() - 1);        
     }
@@ -41,7 +44,7 @@ class RegularExpressionMatching {
         return false;        
     }
 
-    class Solution {
+    class Brute {
         public boolean isMatch(String s, String p) {
             return isPatternValid(s, p, 0, 0);
         }
@@ -59,8 +62,9 @@ class RegularExpressionMatching {
 
             char ch = p.charAt(j);
 
+            final boolean b = j + 1 < length2 && p.charAt(j + 1) == '*';
             if (i  >= length1) {
-                if (j + 1 < length2 && p.charAt(j + 1) == '*' )
+                if (b)
                     return isPatternValid(s, p, i, j + 2);
                 else
                     return false;
@@ -68,11 +72,11 @@ class RegularExpressionMatching {
 
             char ch1 = s.charAt(i);
 
-            if (j + 1 < length2 && p.charAt(j + 1) == '*') {
+            if (b) {
 
                 boolean result = false;
                 if (ch == ch1 || ch == '.')
-                    result = result || isPatternValid(s, p, i + 1, j);
+                    result = isPatternValid(s, p, i + 1, j);
                 return result || isPatternValid(s, p, i, j + 2);
             }
 
@@ -80,5 +84,36 @@ class RegularExpressionMatching {
                 return isPatternValid(s, p, i + 1, j + 1);
             return false;
         }
+    }
+}
+
+class DynamicApproachRegularExpression {
+
+    private final Map<String, Boolean> map = new HashMap<>();
+
+    public boolean isMatch(String text, String pattern) {
+        return isMatchDP(0, 0, text, pattern);
+    }
+
+    private boolean isMatchDP(int i, int j, String text, String pattern) {
+        String key = i + "," + j;
+
+        if (map.containsKey(key))
+            return map.get(key);
+
+        if (j == pattern.length())
+            return i == text.length();
+
+        boolean firstMatch = i < text.length() && (text.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '.');
+
+        boolean answer;
+
+        if (j + 1 < pattern.length() && pattern.charAt(j + 1) == '*')
+            answer = isMatchDP(i, j + 2, text, pattern) || (firstMatch && isMatchDP(i + 1, j, text, pattern));
+        else
+            answer = firstMatch && isMatchDP(i + 1, j + 1, text, pattern);
+
+        map.put(key, answer);
+        return answer;
     }
 }
