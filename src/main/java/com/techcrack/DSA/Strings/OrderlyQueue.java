@@ -3,7 +3,7 @@ package com.techcrack.DSA.Strings;
 import java.util.*;
 
 class OrderlyQueue {
-    public String orderlyQueue(String s, int k) {
+    public String orderlyQueue2(String s, int k) {
         int length = s.length();
         List<List<Object>> pairElement = new ArrayList<>();
 
@@ -74,5 +74,41 @@ class OrderlyQueue {
         }
 
         return s;
+    }
+
+    public String orderlyQueue(String s, int k) {
+        if (s == null || s.length() <= 1)
+            return s;
+
+        return k == 1 ? findSmallestRotation(s) : sortString(s);
+    }
+
+    static String sortString(String s) {
+        char[] sArr = s.toCharArray();
+
+        Arrays.sort(sArr);
+
+        return new String(sArr);
+    }
+
+    static String findSmallestRotation(String s) {
+        String min = s;
+
+        StringBuilder curS = new StringBuilder(s);
+
+        for (int i = 1; i < s.length(); i++) {
+            char ch = curS.charAt(0);
+
+            curS.deleteCharAt(0);
+
+            curS.append(ch);
+
+            String upCurS = curS.toString();
+
+            if (upCurS.compareTo(min) < 0)
+                min = upCurS;
+        }
+
+        return min;
     }
 }
