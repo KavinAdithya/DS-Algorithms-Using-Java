@@ -2,7 +2,7 @@ package com.techcrack.leetcode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.techcrack.DSA.ArrayBinarySearch.*;
+import com.techcrack.DSA.arrayBinarySearch.*;
 import org.junit.jupiter.api.Test;
 
 public class Tester {
