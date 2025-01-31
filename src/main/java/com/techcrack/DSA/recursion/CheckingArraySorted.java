@@ -6,8 +6,10 @@ public class CheckingArraySorted {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, -1};
+//        int[] arr = {1, -1};
+//
+//        System.out.println(isSorted(arr, 1));
 
-        System.out.println(isSorted(arr, 1));
+        System.out.println(Integer.parseInt("01"));
     }
 }
