@@ -1,4 +1,4 @@
-package com.techcrack.DSA.recursion;
+package com.techcrack.DSA.recursion.practise;
 
 class Power {
     public double myPow1(double x, int n) {

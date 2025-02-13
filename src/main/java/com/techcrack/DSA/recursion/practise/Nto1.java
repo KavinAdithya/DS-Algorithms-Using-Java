@@ -1,4 +1,4 @@
-package com.techcrack.DSA.recursion;
+package com.techcrack.DSA.recursion.practise;
 
 public class Nto1 {
     static void fun(int n) {

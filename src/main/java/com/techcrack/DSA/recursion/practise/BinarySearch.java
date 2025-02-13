@@ -1,4 +1,4 @@
-package com.techcrack.DSA.recursion;
+package com.techcrack.DSA.recursion.practise;
 
 public class BinarySearch {
     static int search(int[] arr, int target, int start, int end) {

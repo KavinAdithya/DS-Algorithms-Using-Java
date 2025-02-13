@@ -30,12 +30,36 @@ public class AllPaths {
             printPathDiagonal(processed + 'H', row, col - 1);
     }
 
+
+    static void printPathWithObstacle(String processed, boolean[][] maze, int row, int col) {
+        if (row == maze.length - 1 && col == maze[0].length - 1) {
+            System.out.println(processed);
+            return;
+        }
+
+        if (! maze[row][col]) return;
+
+        if (row < maze.length - 1)
+            printPathWithObstacle(processed + 'D', maze, row + 1, col);
+
+        if (col < maze[0].length - 1)
+            printPathWithObstacle(processed + 'R', maze, row , col + 1);
+    }
+
     public static void main(String[] args) {
-        int row = 3;
-        int col = 3;
+        int row = 0;
+        int col = 0;
 //        System.out.println(countPath(row, col));
 //        printPath("", row, col);
 
-        printPathDiagonal("", row, col);
+//        printPathDiagonal("", row, col);
+
+        boolean[][] maze = {
+                {true, true, true},
+                {true, false, true},
+                {true, true, true}
+        };
+
+        printPathWithObstacle("", maze, row, col);
     }
 }

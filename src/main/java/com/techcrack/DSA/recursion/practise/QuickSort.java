@@ -1,4 +1,4 @@
-package com.techcrack.DSA.recursion;
+package com.techcrack.DSA.recursion.practise;
 
 import java.util.Arrays;
 

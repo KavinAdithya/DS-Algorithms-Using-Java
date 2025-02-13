@@ -55,9 +55,9 @@ public class permutation {
     }
 
     public static void main(String[] args) {
-        String name = "6abc";
+        String name = "abc";
 
-//        stringPermutation("", name);
+        stringPermutation("", name);
 //        System.out.println(name.substring(2) + " " + 'c');
 
 //        System.out.println(stringPermutationPersist("", name));

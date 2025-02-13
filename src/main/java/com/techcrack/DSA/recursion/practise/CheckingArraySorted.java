@@ -1,4 +1,4 @@
-package com.techcrack.DSA.recursion;
+package com.techcrack.DSA.recursion.practise;
 
 public class CheckingArraySorted {
     static  boolean isSorted(int[] arr, int index) {
