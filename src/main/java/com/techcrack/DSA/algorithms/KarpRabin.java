@@ -26,13 +26,13 @@ public class KarpRabin {
         int patternHash = hashValueForString(pattern);
         int textHash = hashValueForString(text.substring(0, m));
 
-        for (int i = 0; i <= text.length() - m; i++) {
+        for (int i = 0; i <= n - m; i++) {
             if (patternHash == textHash) {
                 if (pattern.equals(text.substring(i, i + m)))
                     System.out.println(i + " " + (i + m - 1));
             }
 
-            if (i + m < text.length())
+            if (i + m < n)
                 textHash = updateHashValue(text.charAt(i), text.charAt(i + m), textHash, m);
 
         }
@@ -41,13 +41,6 @@ public class KarpRabin {
     public static void main(String[] args) {
         String pattern = "abc";
         String text = "dabcdabcdabcaabc";
-
-        /**
-         * 1 3
-         * 5 7
-         * 9 11
-         * 13 15
-         */
 
         printSubstrings(pattern, text);
     }
