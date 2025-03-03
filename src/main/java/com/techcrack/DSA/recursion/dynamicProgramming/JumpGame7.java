@@ -1,4 +1,4 @@
-package com.techcrack.dsa.dynamicProgramming;
+package com.techcrack.dsa.recursion.dynamicProgramming;
 
 public class JumpGame7 {
     public boolean canReach(String s, int minJump, int maxJump) {
