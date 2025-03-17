@@ -1,65 +1,57 @@
 package com.techcrack.dsa.recursion;
 
+import java.util.*;
+
 class Solution {
-    public boolean parseBoolExpr(String expression) {
-        // Use an array of length 1 to hold the index by reference.
-        int[] pos = new int[]{0};
-        return evaluate(expression, pos);
+    public static ArrayList<Integer> increasingNumbers(int n) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        if (n == 1) {
+            for (int i = 0; i <= 9; i++) {
+                ans.add(i);
+            }
+            
+            return ans;
+        }
+        
+        Queue<Integer> queue = new ArrayDeque<>();
+        
+        for (int i = 1; i <= 9; i++) {
+            queue.offer(i);
+        }
+        
+        int max = 1;
+        
+        n -= 1;
+        
+        while (n > 0) {
+            max *= 10;
+            n--;
+        }
+       
+       System.out.println(max + " " + queue);
+       
+        while (! queue.isEmpty()) {
+            int top = queue.poll();
+            
+            if (top > max) {
+                ans.add(top);
+            }
+            else {
+                int lastDigit = top % 10;
+                
+                for (int next = lastDigit + 1; next <= 9; next++) {
+                    queue.offer(top * 10 + next);
+                }
+            }
+            
+            System.out.println(queue);
+        }
+        
+        return ans;
     }
 
-
-        private boolean evaluate(String expr, int[] pos) {
-            char c = expr.charAt(pos[0]);
-
-            // Base cases for literals.
-            if (c == 't') {
-                pos[0]++;
-                return true;
-            }
-            if (c == 'f') {
-                pos[0]++;
-                return false;
-            }
-
-            // If the current char is an operator, skip it and the following '('
-            if (c == '!') {
-                pos[0]++; // skip '!'
-                pos[0]++; // skip '('
-                boolean result = !evaluate(expr, pos);
-                pos[0]++; // skip ')'
-                return result;
-            }
-
-            // For '&' or '|' operator.
-            boolean isOr = (c == '|');
-            pos[0]++; // skip the operator character
-            pos[0]++; // skip '('
-
-            // Initialize result: for OR, identity is false; for AND, identity is true.
-            boolean result = isOr ? false : true;
-
-            while (expr.charAt(pos[0]) != ')') {
-                boolean subExpr = evaluate(expr, pos);
-                if (isOr) {
-                    result = result || subExpr;
-                } else {
-                    result = result && subExpr;
-                }
-
-                if (expr.charAt(pos[0]) == ',') {
-                    pos[0]++;
-                }
-            }
-
-            pos[0]++;
-            return result;
-        }
-
-
-
     public static void main(String[] args) {
-        String expression = "&(!(&(&(&(&(&(f),&(!(t),&(f),|(f)),&(!(&(f)),&(t),|(f,f,t))),&(t,t,f),&(&(&(t,t,f),|(f,f,t),|(f)),!(&(t)),!(&(|(f,f,t),&(&(f),&(!(t),&(f),|(f)),&(!(&(f)),&(t),|(f,f,t))),&(t))))),&(t,t,f),&(!(!(&(|(f,f,t),&(&(f),&(!(t),&(f),|(f)),&(!(&(f)),&(t),|(f,f,t))),&(t)))),&(!(&(f)),&(t),|(f,f,t)),&(&(&(!(&(f)),|(t),&(!(t),!(|(f,f,t)),!(&(f)))),!(|(f,f,t)),&(t,t,f)),&(f),&(&(t),&(!(t),!(|(f,f,t)),!(&(f))),|(f,f,t))))),!(&(&(!(&(f)),&(t),|(f,f,t)),&(t),&(t,t,f))),&(f))),!(&(&(t),&(!(t),!(|(f,f,t)),!(&(f))),|(f,f,t))),!(!(!(&(t)))))";
-
-        System.out.println(new Solution().parseBoolExpr(expression));
+        System.out.println(increasingNumbers(2));
     }
 }
