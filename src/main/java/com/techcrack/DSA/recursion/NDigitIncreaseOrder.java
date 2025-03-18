@@ -2,7 +2,7 @@ package com.techcrack.dsa.recursion;
 
 import java.util.*;
 
-class Solution {
+class NDigitIncreaseOrder {
     public static ArrayList<Integer> increasingNumbers(int n) {
         ArrayList<Integer> ans = new ArrayList<>();
         
