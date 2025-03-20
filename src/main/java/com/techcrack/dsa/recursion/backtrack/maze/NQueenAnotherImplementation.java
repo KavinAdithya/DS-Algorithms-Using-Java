@@ -54,7 +54,7 @@ public class NQueenAnotherImplementation {
     }
 
     public static void main(String[] args) {
-        int n = 6;
+        int n = 10;
         boolean[][] table = new boolean[n][n];
 
         System.out.println(nQueen(table, 0));

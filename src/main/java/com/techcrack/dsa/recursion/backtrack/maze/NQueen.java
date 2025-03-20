@@ -3,10 +3,13 @@ import static java.lang.System.out;
 import java.util.Arrays;
 
 public class NQueen {
+    private static int queen;
+
     static int nQueen(boolean[] isColPossible, char[][] table, int row, int col) {
         if (row == table.length) {
             printTable(table);
             out.println();
+            queen++;
             return 1;
         }
 
@@ -45,7 +48,7 @@ public class NQueen {
     }
 
     public static void main(String[] args) {
-        int n = 6;
+        int n = 3;
         char[][] table = new char[n][n];
         boolean[] isColPossible = new boolean[n];
 
@@ -53,5 +56,7 @@ public class NQueen {
         fillColPossible(isColPossible, true);
 
         System.out.println(nQueen(isColPossible, table, 0, 0));
+
+        out.println(queen);
     }
 }
