@@ -1,6 +1,7 @@
 package com.techcrack.dsa.recursion.backtrack.maze;
 
 public class KNight {
+
     static boolean isValid(boolean[][] board, int row, int col) {
         return row >= 0 && row < board.length
                 &&
@@ -32,36 +33,40 @@ public class KNight {
         return true;
     }
 
-    static void kNight(boolean[][] board, int row, int col, int kNight) {
+    static int kNight(boolean[][] board, int row, int col, int kNight) {
         if (kNight == 0) {
             display(board);
             System.out.println();
-            return;
+            return 1;
         }
 
         if (row + 1 == board.length && col == board[0].length)
-            return;
+            return 0;
 
         if (col == board[0].length) {
-            kNight(board, row + 1, 0, kNight);
-            return;
+            return kNight(board, row + 1, 0, kNight);
+//            return ;x
         }
+
+        int count = 0;
 
         if (isSafe(board, row, col)) {
             board[row][col] = true;
 
-            kNight(board, row, col + 1, kNight - 1);
+            count = kNight(board, row, col + 1, kNight - 1);
 
             board[row][col] = false;
         }
 
-        kNight(board, row , col + 1, kNight);
+        count += kNight(board, row , col + 1, kNight);
+
+        return count;
     }
 
     public static void main(String[] args) {
-        int n = 4;
+        int n = 3;
         boolean[][] board = new boolean[n][n];
 
-        kNight(board, 0, 0, n);
+        System.out.println(kNight(board, 0, 0, n));
     }
 }
