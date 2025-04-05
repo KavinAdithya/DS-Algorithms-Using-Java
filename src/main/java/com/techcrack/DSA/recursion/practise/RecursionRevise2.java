@@ -54,14 +54,35 @@ public class RecursionRevise2 {
 //        }
 //    }
 
+    public static int permutation(String processed, String unprocessed) {
+        if (unprocessed.isEmpty()) {
+            System.out.println(processed);
+            return 1;
+        }
+
+        char ch = unprocessed.charAt(0);
+        String up = unprocessed.substring(1);
+        int size = processed.length() + 1;
+        int count = 0;
+
+        for (int i = 0; i < size; i++) {
+            String p = processed.substring(0, i) + ch + processed.substring(i);
+            count += permutation(p, up);
+        }
+
+        return count;
+    }
 
     public static void main(String[] args) {
-        String unprocessed = "hello";
+        /*String unprocessed = "hello";
         subsets("", unprocessed, ' ');
-        subsetsIteration (unprocessed);
+        subsetsIteration (unprocessed);*/
 
 //        Collections.sort(subsets);
 
-        System.out.println(subsets + " \nLength : " + subsets.size());
+//        System.out.println(subsets + " \nLength : " + subsets.size());
+
+        System.out.println(permutation("", "abc"));
+
     }
 }
