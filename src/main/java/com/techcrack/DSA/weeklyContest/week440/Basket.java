@@ -1,6 +1,6 @@
 package com.techcrack.dsa.weeklyContest.week440;
 
-class Solution {
+class Basket {
     int[] segTree ;
     //construct the segment tree using baskets array
     void constructTree(int[] basket,int st,int end,int n){
