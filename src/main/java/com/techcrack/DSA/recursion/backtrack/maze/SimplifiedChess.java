@@ -4,8 +4,10 @@ import java.util.*;
 
 public class SimplifiedChess {
     static class Feature {
+        // White Queen
         public int Qi;
         public int Qj;
+        // Black Queen
         public int qi;
         public int qj;
         public List<int[]> wpieces = new ArrayList<>();
@@ -54,7 +56,7 @@ public class SimplifiedChess {
                 return true;
             }
         }
-        if(step == m) {
+        if(step == m) { 
             return false;
         }
         if(step % 2 == 1) {
@@ -97,9 +99,11 @@ public class SimplifiedChess {
 
     private static List<Move> getValidMoves(char[][] chess, List<int[]> pieces) {
         List<Move> res = new ArrayList<>();
+        
         if(pieces.isEmpty()) {
             return res;
         }
+        
         boolean whiteMove = isWhite((char)(pieces.get(0)[0]));
 
         for(int i = 0; i < 4; i++) {
@@ -125,6 +129,52 @@ public class SimplifiedChess {
             }
         }
         return res;
+    }
+
+    private static boolean isTarget(char[][] chess, int[] piece, int row, int col) {
+        char p = (char)piece[0];
+        int[] x1 = {0, 0, 1, -1, 1, -1, 1, -1};
+        int[] y1 = {1, -1, 0, 0, 1, -1, -1, 1};
+        int[] x2 = {1, -1, 1, -1};
+        int[] y2 = {1, -1, -1, 1};
+        int[] x3 = {0, 0, 1, -1};
+        int[] y3 = {1, -1, 0, 0};
+        int[] x = x1;
+        int[] y = y1;
+
+        if(p == 'q' || p == 'Q') {
+            x = x1;
+            y = y1;
+        } else if(p == 'n' || p == 'N') {
+            if(Math.abs(piece[1]-row) == 2 && Math.abs(piece[2]-col) == 1) {
+                return true;
+            }
+            if(Math.abs(piece[1]-row) == 1 && Math.abs(piece[2]-col) == 2) {
+                return true;
+            }
+            return false;
+        } else if(p == 'b' || p == 'B') {
+            x = x2;
+            y = y2;
+        } else if(p == 'r' || p == 'R') {
+            x = x3;
+            y = y3;
+        }
+        for(int d = 0; d < x.length; d++) {
+            int i = piece[1] + x[d];
+            int j = piece[2] + y[d];
+            for(; i >= 0 && i < 4 && j>=0 && j<4; i+=x[d], j+=y[d]) {
+                if(i != row || j != col) {
+                    if(!isEmpty(chess[i][j])){
+                        break;
+                    }
+                }
+                if(i == row && j == col) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static Feature getFeature(char[][] chess) {
@@ -182,49 +232,5 @@ public class SimplifiedChess {
         return false;
     }
 
-    private static boolean isTarget(char[][] chess, int[] piece, int row, int col) {
-        char p = (char)piece[0];
-        int[] x1 = {0, 0, 1, -1, 1, -1, 1, -1};
-        int[] y1 = {1, -1, 0, 0, 1, -1, -1, 1};
-        int[] x2 = {1, -1, 1, -1};
-        int[] y2 = {1, -1, -1, 1};
-        int[] x3 = {0, 0, 1, -1};
-        int[] y3 = {1, -1, 0, 0};
-        int[] x = x1;
-        int[] y = y1;
 
-        if(p == 'q' || p == 'Q') {
-            x = x1;
-               y = y1;
-        } else if(p == 'n' || p == 'N') {
-            if(Math.abs(piece[1]-row) == 2 && Math.abs(piece[2]-col) == 1) {
-                return true;
-            }
-            if(Math.abs(piece[1]-row) == 1 && Math.abs(piece[2]-col) == 2) {
-                return true;
-            }
-            return false;
-        } else if(p == 'b' || p == 'B') {
-            x = x2;
-            y = y2;
-        } else if(p == 'r' || p == 'R') {
-            x = x3;
-            y = y3;
-        }
-        for(int d = 0; d < x.length; d++) {
-            int i = piece[1] + x[d];
-            int j = piece[2] + y[d];
-            for(; i >= 0 && i < 4 && j>=0 && j<4; i+=x[d], j+=y[d]) {
-                if(i != row || j != col) {
-                    if(!isEmpty(chess[i][j])){
-                        break;
-                    }
-                }
-                if(i == row && j == col) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 }
