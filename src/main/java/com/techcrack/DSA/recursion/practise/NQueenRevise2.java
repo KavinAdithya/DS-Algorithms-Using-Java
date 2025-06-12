@@ -1,6 +1,13 @@
 package com.techcrack.dsa.recursion.practise;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class NQueenRevise2 {
+    private static final Set<Integer> col = new HashSet<>();
+    private static final Set<Integer> leftSide = new HashSet<>();
+    private static final Set<Integer> rightSide = new HashSet<>();
+
     public static void printBoard(boolean[][] isPlaced) {
         for (boolean[] place : isPlaced) {
             for (boolean p : place) {
@@ -54,10 +61,49 @@ public class NQueenRevise2 {
         return true;
     }
 
+
+    public static void print(boolean[][] board) {
+        for (boolean[] r : board) {
+            for (boolean c : r) {
+                System.out.print((c ? 'Q' : 'X') + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void queen(boolean[][] board, int n, int r) {
+        if (r == n) {
+            print(board);
+            return;
+        }
+
+        for (int c = 0; c < n; ++c) {
+            int left = r - c;
+            int right = r + c;
+
+            if (col.contains(c) || leftSide.contains(left) || rightSide.contains(right)) {
+                continue;
+            }
+
+            col.add(c);
+            leftSide.add(left);
+            rightSide.add(right);
+            board[r][c] = true;
+
+            queen(board, n, r + 1);
+
+            col.remove(c);
+            leftSide.remove(left);
+            rightSide.remove(right);
+            board[r][c] = false;
+        }
+    }
+
     public static void main(String[] args) {
-        int n = 10;
+        int n = 4;
         boolean[][] isPlaced = new boolean[n][n];
 
-        System.out.println(nQueen(isPlaced, n, 0));
+       queen(isPlaced, n, 0);
     }
 }

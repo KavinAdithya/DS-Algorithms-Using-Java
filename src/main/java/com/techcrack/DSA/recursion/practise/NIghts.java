@@ -1,7 +1,5 @@
 package com.techcrack.dsa.recursion.practise;
 
-import javax.security.auth.login.AccountException;
-
 public class Nights {
     private static final int[][] DIRECTIONS = {
             {-2, -1},
@@ -82,12 +80,53 @@ public class Nights {
         return count + kNightUsingCol(isPlaced, k, n, r, c + 1);
     }
 
+    public static boolean isSafePlace(boolean[][] board, int n, int r, int c) {
+        for (int[] d : DIRECTIONS) {
+            int row = d[0] + r;
+            int col = d[1] + c;
+
+            if (row >= 0 && row < n && col >= 0 && col < n && board[row][col]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static int nights(boolean[][] board, int n, int kNight, int r, int c) {
+        if (kNight == 0) {
+            printBoard(board);
+            return 1;
+        }
+
+        if (n == r) {
+            return 0;
+        }
+
+        if (c == n) {
+            return nights(board, n, kNight, r + 1, 0);
+        }
+
+        int count = 0;
+
+        if (isSafePlace(board, n, r, c)) {
+            board[r][c] = true;
+            count = nights(board, n, kNight - 1, r, c + 1);
+            board[r][c] = false;
+        }
+
+        return count + nights(board, n, kNight, r, c + 1);
+    }
+
     public static void main(String[] args) {
         int n = 4;
 
         boolean[][] isPlaced = new boolean[n][n];
 
-        System.out.println(kNightUsingCol(isPlaced, n, n, 0,0));
+        System.out.println("First ");
+//        System.out.println(kNightUsingCol(isPlaced, n, n, 0,0));
+        System.out.println("Next");
+        System.out.println(nights(isPlaced, n, n, 0, 0));
 
     }
 }

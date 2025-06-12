@@ -97,6 +97,7 @@ public class SimplifiedChess {
         chess[m.srcRow][m.srcCol] = m.srcPiece;
     }
 
+
     private static List<Move> getValidMoves(char[][] chess, List<int[]> pieces) {
         List<Move> res = new ArrayList<>();
         
@@ -149,10 +150,7 @@ public class SimplifiedChess {
             if(Math.abs(piece[1]-row) == 2 && Math.abs(piece[2]-col) == 1) {
                 return true;
             }
-            if(Math.abs(piece[1]-row) == 1 && Math.abs(piece[2]-col) == 2) {
-                return true;
-            }
-            return false;
+            return Math.abs(piece[1] - row) == 1 && Math.abs(piece[2] - col) == 2;
         } else if(p == 'b' || p == 'B') {
             x = x2;
             y = y2;
@@ -231,6 +229,4 @@ public class SimplifiedChess {
         }
         return false;
     }
-
-
 }
