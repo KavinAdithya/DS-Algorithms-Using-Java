@@ -49,9 +49,9 @@ public class ChessEngine {
                 char piece = board[r][c];
                 int[] p = new int[3];
 
-                p[0] = r;
-                p[1] = c;
-                p[2] = piece;
+                p[0] = piece;
+                p[1] = r;
+                p[2] = c;
 
                 if (isWhite(piece)) {
                     f.wPiece.add(p);
