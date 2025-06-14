@@ -76,6 +76,49 @@ public class VideoLearning {
         return n != 0 && (n & (n - 1)) == 0;
     }
 
+    public static int countSetBitsBruteForce(int n) {
+        int count = 0;
+        int totIteration = 0;
+
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                count++;
+            }
+            n >>= 1;
+            totIteration++;
+        }
+
+        System.out.println("Total Iteration : " + totIteration);
+
+        return count;
+    }
+
+    public static int setBits(int n) {
+        int count = 0;
+        int totIteration = 0;
+
+        while (n > 0) {
+            count++;
+//            n -= (n & (-n));
+            n &= (n - 1);
+            ++totIteration;
+        }
+
+        System.out.println("Total Iterations : " + totIteration);
+
+        return count;
+    }
+
+    public static int findXorN(int n) {
+        return n % 4 == 0 ? n :
+                n % 4 == 1 ? 1 :
+                        n % 4 == 2 ? n + 1 : 0;
+    }
+
+    public static int findRangeXor(int a, int b) {
+        return findXorN(b) ^ findXorN(a - 1);
+    }
+
     public static void main(String[] args) {
         int[] arr = {2, 3, 3, 5, 1, 6, 2, 5, 1};
 
@@ -89,6 +132,10 @@ public class VideoLearning {
 //        System.out.println(countDigits(8, 2));
 //        System.out.println(nthRowSumPascal(5));
 
-        System.out.println(isPowerOfTwo(0));
+//        System.out.println(isPowerOfTwo(0));
+
+//        System.out.println(countSetBitsBruteForce(10));
+
+        System.out.println(findXorN(10));
     }
 }
