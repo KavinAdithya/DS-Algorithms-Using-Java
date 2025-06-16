@@ -136,6 +136,6 @@ public class VideoLearning {
 
 //        System.out.println(countSetBitsBruteForce(10));
 
-        System.out.println(findXorN(10));
+        System.out.println(findRangeXor(3,9));
     }
 }
