@@ -1,4 +1,4 @@
-package com.techcrack.dsa.tree;
+package com.techcrack.dsa.tree.learned;
 
 public class AVL {
     private Node root;
@@ -119,7 +119,7 @@ public class AVL {
     public static void main(String[] args) {
         AVL tree = new AVL();
 
-        for (int i = 1; i <= 10000; ++i) {
+        for (int i = 1; i <= 10; ++i) {
             tree.insert(i);
         }
 

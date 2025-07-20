@@ -1,8 +1,4 @@
-package com.techcrack.dsa.tree;
-
-import com.techcrack.dsa.arrayBinarySearch.PlusOne;
-
-import javax.swing.*;
+package com.techcrack.dsa.tree.learned;
 
 public class BST {
     public static Node root;
@@ -162,16 +158,18 @@ public class BST {
 //        populateSorted(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 
         createSortedTree(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        System.out.println(Traversals.traverseByLevel(root));
         display(root, 0);
-
-//        preOrder(root);
-//        System.out.println();
-        inOrder(root);
-        System.out.println();
-//        postOrder(root);
+        int _num = 1;
 //
+////        preOrder(root);
+////        System.out.println();
+//        inOrder(root);
 //        System.out.println();
-
-        System.out.println(isTreeBalanced(root));
+////        postOrder(root);
+////
+////        System.out.println();
+//
+//        System.out.println(isTreeBalanced(root));
     }
 }

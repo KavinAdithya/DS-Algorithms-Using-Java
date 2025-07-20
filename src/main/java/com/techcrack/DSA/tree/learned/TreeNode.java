@@ -1,4 +1,4 @@
-package com.techcrack.dsa.tree;
+package com.techcrack.dsa.tree.learned;
 
 public class TreeNode {
     int val;
