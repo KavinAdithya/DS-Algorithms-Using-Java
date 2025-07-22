@@ -60,11 +60,30 @@ public class Tree {
         display(node.right, "\t" + indent);
     }
 
+    public static void prettyDisplay(Node node, int level) {
+        if (node == null) {
+            return;
+        }
+
+        prettyDisplay(node.right, level + 1);
+
+        for (int i = 1; i < level; ++i) {
+            System.out.print("|\t\t");
+        }
+
+        System.out.println(level == 0 ? node.value
+                : "|------(" + node.value + ")");
+
+        prettyDisplay(node.left, level + 1);
+    }
+
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         createTree(scan);
-        display(root);
+//        display(root);
+
+        prettyDisplay(root, 0);
     }
 }
