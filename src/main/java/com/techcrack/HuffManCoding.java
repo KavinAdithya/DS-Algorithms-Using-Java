@@ -15,7 +15,7 @@ public class HuffManCoding {
         Node left;
         Node right;
 
-        Node(Character data, Integer cos) {
+        Node(Character data, Integer cost) {
             this.data = data;
             this.cost =  cost;
         }
@@ -48,6 +48,8 @@ public class HuffManCoding {
             Node second = minHeap.poll();
 
             Node cur = new Node('\0', first.cost + second.cost);
+            cur.left = first;
+            cur.right = second;
 
             minHeap.offer(cur);
         }
@@ -134,5 +136,22 @@ public class HuffManCoding {
         }
 
         return encode.toString();
+    }
+
+    public static void main(String[] args) {
+        String data = "abbccda";
+        HuffManCoding code = new HuffManCoding(data);
+
+        String d = code.encodeDataStr(data);
+
+        System.out.println(d);
+
+        System.out.println(code.decodeDataStr(d));
+
+        BitSet b = code.encode(data);
+
+        System.out.println(b);
+
+        System.out.println(code.decode(b, b.length()));
     }
 }
