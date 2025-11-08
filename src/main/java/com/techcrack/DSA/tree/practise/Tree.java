@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Tree {
     static Node root;
 
-    static class Node {
+    public static class Node {
         int value;
         Node left;
         Node right;
