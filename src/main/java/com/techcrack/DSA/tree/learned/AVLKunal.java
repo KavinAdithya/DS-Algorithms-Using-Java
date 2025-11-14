@@ -1,12 +1,12 @@
 package com.techcrack.dsa.tree.learned;
 
-class AVLKunal {
+public class AVLKunal {
 
     public static class Node {
         private final int value;
-        private Node left;
-        private Node right;
-        private int height;
+        public Node left;
+        public Node right;
+        public int height;
 
         public Node(int value) {
           this.value = value;
@@ -26,6 +26,7 @@ class AVLKunal {
     public int height() {
         return height(root);
     }
+
     private int height(Node node) {
         if (node == null) {
           return -1;
@@ -59,11 +60,11 @@ class AVLKunal {
         if (height(node.left) - height(node.right) > 1) {
           // left heavy
           if(height(node.left.left) - height(node.left.right) > 0) {
-            // left left case
+            // left-left case
             return rightRotate(node);
           }
           if(height(node.left.left) - height(node.left.right) < 0) {
-            // left right case
+            // left-right case
             node.left = leftRotate(node.left);
             return rightRotate(node);
           }
@@ -98,12 +99,12 @@ class AVLKunal {
         return c;
     }
 
-    public Node leftRotate(Node c) {
-        Node p = c.right;
-        Node t = p.left;
+    public Node leftRotate(Node p) {
+        Node c = p.right;
+        Node t = c.left;
 
-        p.left = c;
-        c.right = t;
+        c.left = p;
+        p.right = t;
 
         p.height = Math.max(height(p.left), height(p.right)) + 1;
         c.height = Math.max(height(c.left), height(c.right)) + 1;
